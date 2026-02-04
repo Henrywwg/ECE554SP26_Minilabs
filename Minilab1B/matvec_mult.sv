@@ -7,14 +7,21 @@ module matvec_mult (
     input logic Clr,
     input logic start,
     output logic done,
-    output logic [23:0]result[0:7] //8 results, each 24 bits wide
+    output logic [23:0]results[0:7] //8 results, each 24 bits wide
 );
 
 logic all_fifos_full, all_fifos_empty;
 logic start_filler;
+logic memory_busy;
 
 logic matrix_fill_status[0:7], matrix_empty_status[0:7];
 logic vector_fill_status, vector_empty_status;
+
+logic [7:0]FIFO_fill_data;
+
+logic [8:0]fifo_addr; //raw one hot encoding from memory interfacer
+logic fifo_addr_conv[8:0];
+logic fifo_addr_conv_vec;
 
 logic [7:0]FIFO_data_matrix[0:7];
 logic [7:0]FIFO_data_vector;
@@ -22,6 +29,8 @@ logic [7:0]FIFO_data_vector;
 logic [7:0] B_shift_reg[0:7]; //8 wide shift (8x8) register for B inputs to MACs
 
 reg [15:0] MAC_enables; //one enable per MAC unit (but add 8 bit depth to simplify shift register)
+wire MAC_enables_conv[7:0];
+wire VEC_enable;
 wire clr_mac_en;
 
 //state machine states
@@ -42,21 +51,41 @@ assign all_fifos_empty  = &{matrix_empty_status, vector_empty_status};
 feed_from_mem iFIFOFILLER (
     .clk(clk),
     .rst_n(rst_n),
-    .fifo_addr(),       //one hot encoding
-    .fifo_din(),        //one byte input
-    .en_fifo_write(),
-    .fill(start_filler),//input to start iFIFOFILLER
-    .memory_busy()      //output of memory controller
-)
+    .fifo_addr(fifo_addr),      //one hot encoding
+    .fifo_din(FIFO_fill_data),  //one byte input
+    .fill(start_filler),        //input to start iFIFOFILLER
+    .memory_busy(memory_busy)   //output of memory controller
+);
 // Above module is in progress so final ports may differ
+
+//Convert our busses into arrays for easier indexing
+genvar i;
+generate
+    for(i=0; i<8; i=i+1) begin : ADDR_CONV_LOOP
+        assign fifo_addr_conv[i] = fifo_addr[i] & (current_state == FILL);
+    end
+endgenerate
+
+assign fifo_addr_conv_vec = fifo_addr[8] & (current_state == FILL);
+
+genvar j;
+generate
+    for(j=0; j<8; j=j+1) begin : MAC_EN_CONV_LOOP
+        assign MAC_enables_conv[j] = MAC_enables[j+8];
+    end
+endgenerate
+
+assign VEC_enable = MAC_enables[15] & (current_state == FILL); //vector FIFO read enable is the 9th bit of MAC enables
+
+
 
 //Instantiate FIFOs for matrix and vector storage (9 total)
 FIFO matrix_fifo[0:7] (
     .clk(clk),
     .rst_n(rst_n),
-    .rden(),            //read enable from MAC unit
-    .wren(),            //write enable from memory interfacer
-    .i_data(),         //data from memory interfacer
+    .rden(MAC_enables_conv),            //read enable from MAC unit
+    .wren(fifo_addr_conv),            //write enable from memory interfacer [7:0]fifo_addr  fifo_addr[0:7]
+    .i_data(FIFO_fill_data),         //data from memory interfacer
     .o_data(FIFO_data_matrix),         //data to MAC unit
     .full(matrix_fill_status), //one per FIFO
     .empty(matrix_empty_status)  //one per FIFO
@@ -65,9 +94,9 @@ FIFO matrix_fifo[0:7] (
 FIFO vector_fifo (
     .clk(clk),
     .rst_n(rst_n),
-    .rden(),            //read enable from MAC unit
-    .wren(),            //write enable from memory interfacer
-    .i_data(),         //data from memory interfacer
+    .rden(VEC_enable),            //read enable from MAC unit
+    .wren(fifo_addr_conv_vec),            //write enable from memory interfacer
+    .i_data(FIFO_fill_data),         //data from memory interfacer
     .o_data(FIFO_data_vector[7:0]),         //data to MAC unit
     .full(vector_fill_status),
     .empty(vector_empty_status)
@@ -76,15 +105,14 @@ FIFO vector_fifo (
 
 //Instantiate MACs (8 total)
 //B inputs propagate with enable signals shifted down the line
-
 MAC iMAC[0:7](
     .clk(clk),
     .rst_n(rst_n),
-    .En(MAC_enables[15:8]), //from state machine
+    .En(MAC_enables_conv), //from state machine
     .Clr(Clr),
     .Ain(FIFO_data_matrix),  //from matrix FIFO 0
     .Bin(B_shift_reg),     //from vector FIFO (8 bit bus, 8 values)
-    .Cout(result)         //to next MAC (each output is 24 bits wide)
+    .Cout(results)         //to next MAC (each output is 24 bits wide)
 );
 
 
@@ -137,18 +165,17 @@ always_comb begin
             //Wait for memory to not be busy
             if(!memory_busy) 
                 start_filler = 1'b1;       
-            else 
-                if(all_fifos_full)
-                    next_state = COMPUTE;
-                else
-                    next_state = FILL;
-            next_state = FILL;  //stay in FILL until all FIFOs are full
+            
+            if(all_fifos_full)
+                next_state = COMPUTE;
+            else
+                next_state = FILL;
         end
 
         COMPUTE: begin
+            clr_mac_en = 1'b0; //enable MACs
             if(Clr)
                 next_state = IDLE;
-            clr_mac_en = 1'b0; //enable MAC en shifting
             else if(all_fifos_empty)
                 next_state = DONE;
             else
