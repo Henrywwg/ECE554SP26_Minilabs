@@ -1,0 +1,5 @@
+{
+    "teroshdl.linter.general.linter_enable": false,
+    "teroshdl.formatting.formatter": "verible",
+    "teroshdl.documentation.general.language": "english"
+}

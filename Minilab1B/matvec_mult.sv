@@ -2,10 +2,10 @@
 
 // Matrix-vector multiplier
 module matvec_mult (
-    input logic clk,
-    input logic rst_n,
-    input logic Clr,
-    input logic start,
+    input wire clk,
+    input wire rst_n,
+    input wire Clr,
+    input wire start,
     output logic done,
     output logic [23:0]results[0:7] //8 results, each 24 bits wide
 );
@@ -31,7 +31,7 @@ logic [7:0] B_shift_reg[0:7]; //8 wide shift (8x8) register for B inputs to MACs
 reg [15:0] MAC_enables; //one enable per MAC unit (but add 8 bit depth to simplify shift register)
 wire MAC_enables_conv[7:0];
 wire VEC_enable;
-wire clr_mac_en;
+logic clr_mac_en;
 
 //state machine states
 typedef enum logic [1:0] {
@@ -42,8 +42,8 @@ typedef enum logic [1:0] {
 } state_t;
 state_t current_state, next_state;
 
-assign all_fifos_full   = &{matrix_fill_status, vector_fill_status};
-assign all_fifos_empty  = &{matrix_empty_status, vector_empty_status};
+assign all_fifos_full   = &{matrix_fill_status[7], matrix_fill_status[6], matrix_fill_status[5], matrix_fill_status[4], matrix_fill_status[3], matrix_fill_status[2], matrix_fill_status[1], matrix_fill_status[0], vector_fill_status};
+assign all_fifos_empty  = &{matrix_empty_status[7], matrix_empty_status[6], matrix_empty_status[5], matrix_empty_status[4], matrix_empty_status[3], matrix_empty_status[2], matrix_empty_status[1], matrix_empty_status[0], vector_empty_status};
 
 // memory interfacer which will spit out one 
 // byte at a time to the FIFO's instantiated further down
@@ -60,22 +60,23 @@ feed_from_mem iFIFOFILLER (
 
 //Convert our busses into arrays for easier indexing
 genvar i;
-generate
+generate    // convert fifo_addr for filling matrix FIFOs
     for(i=0; i<8; i=i+1) begin : ADDR_CONV_LOOP
         assign fifo_addr_conv[i] = fifo_addr[i] & (current_state == FILL);
     end
 endgenerate
 
+//Convert fifo_addr for filling vector FIFO
 assign fifo_addr_conv_vec = fifo_addr[8] & (current_state == FILL);
 
 genvar j;
-generate
+generate    // convert MAC enables for MAC units; MAC enables are the same as the read enables for matrix FIFOs
     for(j=0; j<8; j=j+1) begin : MAC_EN_CONV_LOOP
         assign MAC_enables_conv[j] = MAC_enables[j+8];
     end
 endgenerate
 
-assign VEC_enable = MAC_enables[15] & (current_state == FILL); //vector FIFO read enable is the 9th bit of MAC enables
+assign VEC_enable = MAC_enables_conv[0]; //vector FIFO read enable is the same as the first MAC/FIFO read enable
 
 
 
