@@ -23,9 +23,9 @@ module fill_from_mem
     output logic [NUM_FIFOS-1:0] fifoEnable,  // Write-Enable to FIFOs (1-hot)
 
     // Done Signal
-    output reg done
+    output reg done,
+    output wire memory_busy
 );
-
 
 
 // State Machine Parameters
@@ -34,6 +34,8 @@ localparam IDLE = 2'b00,
            LOAD = 2'b01,
            FILL = 2'b10,
            EVAL = 2'b11;
+
+           
 reg [31:0] curAddr;
 reg memRead, memDone, memInUse;
 
@@ -46,7 +48,7 @@ reg writeEn;                 // Write current Byte to current FIFO
 // Output only sees 1-Hot Write-Enable
 assign fifoEnable = writeEn ? fifoCTR : '0;
 
-reg [DEPTH-1:0] byteCTR;  // Which FIFO index is being filled
+reg [DEPTH:0] byteCTR;  // Which FIFO index is being filled
 
 
 
@@ -104,7 +106,7 @@ always @(posedge clk or negedge rst_n) begin
         FILL: begin
             writeEn <= 1'b0;
             // Current FIFO full
-            if (~&byteCTR) state <= EVAL;   // TODO - Addressing issues
+            if (byteCTR[DEPTH]) state <= EVAL;
             // Room remains; Feed next Byte
             else begin
                 byteCTR <= byteCTR<<1;
@@ -116,17 +118,16 @@ always @(posedge clk or negedge rst_n) begin
         EVAL: begin
             
             // Next FIFO exists
-            if (fifoCTR<<1) begin
-                curAddr <= curAddr + 1;   // TODO - Addressing issues
+            if (fifoCTR[NUM_FIFOS-1]) begin
+                // Last FIFO done - all complete
+                done <= 1'b1;
+                state <= IDLE;
+            // More FIFOs to fill
+            end else begin
+                curAddr <= curAddr + 1;
                 fifoCTR <= fifoCTR<<1;
                 memRead <= 1'b1;
                 state <= LOAD;
-            
-            // All FIFOs filled
-            end else begin
-                // TODO - Reset actions?
-                done <= 1'b1;
-                state <= IDLE;
         end end
     
     // End of Case Statement
@@ -135,4 +136,10 @@ always @(posedge clk or negedge rst_n) begin
 end // End of ALWAYS BLOCK
 
 // End of feed_from_mem
+
+
+// Hehe I snuck this in here for myself >:3
+assign memory_busy = memInUse;
+
+
 endmodule

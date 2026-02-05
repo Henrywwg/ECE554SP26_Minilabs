@@ -1,0 +1,14 @@
+#ignore all vsim files
+*.mpf
+*.wlf
+*.cr.mti
+*.cr
+transcript
+#ignore work folders in subdirectories
+Minilab1B/work/*
+Minilab1B/work/**
+work/*
+work/**
+work/
+/work/
+*.log

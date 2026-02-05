@@ -1,52 +1,1079 @@
-# Compile of fifo.sv was successful.
-# Compile of mac.sv was successful.
-# Compile of matvec_mult.sv failed with 12 errors.
-# Compile of memory.v was successful.
-# Compile of rom.v was successful.
-# 5 compiles, 1 failed with 12 errors.
-# Compile of matvec_mult.sv failed with 9 errors.
-# Compile of matvec_mult.sv failed with 7 errors.
-# Compile of matvec_mult.sv failed with 4 errors.
-# Compile of matvec_mult.sv was successful.
-# Compile of feed_from_mem.sv failed with 3 errors.
-# Compile of feed_from_mem_tb.sv failed with 1 errors.
-# Compile of mult_tb.sv was successful.
-# 3 compiles, 2 failed with 4 errors.
+# Loading project minilab1b
 # Compile of fifo.sv was successful.
 # Compile of mac.sv was successful.
 # Compile of matvec_mult.sv was successful.
 # Compile of memory.v was successful.
 # Compile of rom.v was successful.
-# Compile of feed_from_mem.sv failed with 3 errors.
-# Compile of feed_from_mem_tb.sv failed with 1 errors.
-# Compile of mult_tb.sv was successful.
-# 8 compiles, 2 failed with 4 errors.
-# Compile of fifo.sv was successful.
-# Compile of mac.sv was successful.
-# Compile of matvec_mult.sv was successful.
-# Compile of memory.v was successful.
-# Compile of rom.v was successful.
-# Compile of feed_from_mem.sv failed with 3 errors.
-# Compile of feed_from_mem_tb.sv failed with 1 errors.
-# Compile of mult_tb.sv was successful.
-# 8 compiles, 2 failed with 4 errors.
-# Compile of feed_from_mem.sv failed with 3 errors.
-# Compile of feed_from_mem_tb.sv was successful.
-# 2 compiles, 1 failed with 3 errors.
-# Compile of feed_from_mem.sv failed with 3 errors.
 # Compile of feed_from_mem.sv was successful.
-vsim -gui work.mult_tb
-# vsim -gui work.mult_tb 
-# Start time: 12:45:21 on Feb 04,2026
+# Compile of feed_from_mem_tb.sv was successful.
+# Compile of mult_tb.sv was successful.
+# 8 compiles, 0 failed with no errors.
+vsim work.mult_tb -L altera_mf_ver -voptargs="+acc"
+# vsim work.mult_tb -L altera_mf_ver -voptargs=""+acc"" 
+# Start time: 20:47:54 on Feb 04,2026
 # Loading sv_std.std
 # Loading work.mult_tb
 # Loading work.matvec_mult
-# ** Error: (vsim-3033) Instantiation of 'feed_from_mem' failed. The design unit was not found.
-#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 51
-#         Searched libraries:
-#             C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/work
+# Loading work.fill_from_mem
+# Loading work.mem_wrapper
+# Loading work.rom
+# Loading altera_mf_ver.altsyncram
 # Loading work.FIFO
 # Loading work.matrix_mult
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.MAC
+# ** Error: (vsim-3063) Port 'rst' not found in the connected module (2nd connection).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/mult_tb.sv Line: 21
+# ** Error: (vsim-3063) Port 'result' not found in the connected module (6th connection).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/mult_tb.sv Line: 21
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'iFIFOFILLER'.  Expected 7, found 6.
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 51
+# ** Error: (vsim-3063) Port 'fifo_addr' not found in the connected module (3rd connection).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 51
+# ** Error: (vsim-3063) Port 'fifo_din' not found in the connected module (4th connection).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 51
+# ** Error: (vsim-3063) Port 'memory_busy' not found in the connected module (6th connection).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 51
+# ** Warning: (vsim-3722) C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv(51): [TFMPC] - Missing connection for port 'addr'.
+# ** Warning: (vsim-3722) C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv(51): [TFMPC] - Missing connection for port 'dataByte'.
+# ** Warning: (vsim-3722) C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv(51): [TFMPC] - Missing connection for port 'fifoEnable'.
+# ** Warning: (vsim-3722) C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv(51): [TFMPC] - Missing connection for port 'done'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+# ** Error (suppressible): (vsim-3054) Port connection object port 'wren' must be 1 or 8-bit wide. The actual provided is 9-bit. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/fifo.sv(11).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/matrix_fifo[7] File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 84
+# ** Error: (vsim-8636) Conn. to port 'wren' has dim. of width 9, but inst. array dim. is 8.
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/matrix_fifo[7] File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 84
 # Error loading design
-# End time: 12:45:23 on Feb 04,2026, Elapsed time: 0:00:02
-# Errors: 1, Warnings: 16
+# End time: 20:47:54 on Feb 04,2026, Elapsed time: 0:00:00
+# Errors: 7, Warnings: 8
+# Compile of fifo.sv was successful.
+# Compile of mac.sv was successful.
+# Compile of matvec_mult.sv was successful.
+# Compile of memory.v was successful.
+# Compile of rom.v was successful.
+# Compile of feed_from_mem.sv failed with 1 errors.
+# Compile of feed_from_mem_tb.sv was successful.
+# Compile of mult_tb.sv was successful.
+# 8 compiles, 1 failed with 1 error.
+# Compile of fifo.sv was successful.
+# Compile of mac.sv was successful.
+# Compile of matvec_mult.sv was successful.
+# Compile of memory.v was successful.
+# Compile of rom.v was successful.
+# Compile of feed_from_mem.sv was successful.
+# Compile of feed_from_mem_tb.sv was successful.
+# Compile of mult_tb.sv was successful.
+# 8 compiles, 0 failed with no errors.
+vsim work.mult_tb -L altera_mf_ver -voptargs="+acc"
+# vsim work.mult_tb -L altera_mf_ver -voptargs=""+acc"" 
+# Start time: 20:51:19 on Feb 04,2026
+# Loading sv_std.std
+# Loading work.mult_tb
+# Loading work.matvec_mult
+# Loading work.fill_from_mem
+# Loading work.mem_wrapper
+# Loading work.rom
+# Loading altera_mf_ver.altsyncram
+# Loading work.FIFO
+# Loading work.matrix_mult
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.MAC
+# ** Error: (vsim-3063) Port 'rst' not found in the connected module (2nd connection).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/mult_tb.sv Line: 21
+# ** Error: (vsim-3063) Port 'result' not found in the connected module (6th connection).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/mult_tb.sv Line: 21
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'iFIFOFILLER'.  Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 51
+# ** Error: (vsim-3063) Port 'fifo_addr' not found in the connected module (4th connection).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 51
+# ** Error: (vsim-3063) Port 'fifo_din' not found in the connected module (5th connection).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 51
+# ** Warning: (vsim-3722) C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv(51): [TFMPC] - Missing connection for port 'dataByte'.
+# ** Warning: (vsim-3722) C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv(51): [TFMPC] - Missing connection for port 'fifoEnable'.
+# ** Warning: (vsim-3722) C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv(51): [TFMPC] - Missing connection for port 'done'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+# ** Error (suppressible): (vsim-3054) Port connection object port 'wren' must be 1 or 8-bit wide. The actual provided is 9-bit. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/fifo.sv(11).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/matrix_fifo[7] File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 85
+# ** Error: (vsim-8636) Conn. to port 'wren' has dim. of width 9, but inst. array dim. is 8.
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/matrix_fifo[7] File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 85
+# Error loading design
+# End time: 20:51:19 on Feb 04,2026, Elapsed time: 0:00:00
+# Errors: 6, Warnings: 8
+# Compile of matvec_mult.sv was successful.
+vsim work.mult_tb -L altera_mf_ver -voptargs="+acc"
+# vsim work.mult_tb -L altera_mf_ver -voptargs=""+acc"" 
+# Start time: 20:51:38 on Feb 04,2026
+# Loading sv_std.std
+# Loading work.mult_tb
+# Loading work.matvec_mult
+# Loading work.fill_from_mem
+# Loading work.mem_wrapper
+# Loading work.rom
+# Loading altera_mf_ver.altsyncram
+# Loading work.FIFO
+# Loading work.matrix_mult
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.MAC
+# ** Error: (vsim-3063) Port 'rst' not found in the connected module (2nd connection).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/mult_tb.sv Line: 21
+# ** Error: (vsim-3063) Port 'result' not found in the connected module (6th connection).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/mult_tb.sv Line: 21
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'iFIFOFILLER'.  Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 51
+# ** Warning: (vsim-3722) C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv(51): [TFMPC] - Missing connection for port 'done'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+# ** Error (suppressible): (vsim-3054) Port connection object port 'wren' must be 1 or 8-bit wide. The actual provided is 9-bit. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/fifo.sv(11).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/matrix_fifo[7] File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 85
+# ** Error: (vsim-8636) Conn. to port 'wren' has dim. of width 9, but inst. array dim. is 8.
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/matrix_fifo[7] File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 85
+# Error loading design
+# End time: 20:51:39 on Feb 04,2026, Elapsed time: 0:00:01
+# Errors: 4, Warnings: 5
+# Compile of mult_tb.sv was successful.
+vsim work.mult_tb -L altera_mf_ver -voptargs="+acc"
+# vsim work.mult_tb -L altera_mf_ver -voptargs=""+acc"" 
+# Start time: 20:52:38 on Feb 04,2026
+# Loading sv_std.std
+# Loading work.mult_tb
+# Loading work.matvec_mult
+# Loading work.fill_from_mem
+# Loading work.mem_wrapper
+# Loading work.rom
+# Loading altera_mf_ver.altsyncram
+# Loading work.FIFO
+# Loading work.matrix_mult
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.MAC
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'iFIFOFILLER'.  Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 51
+# ** Warning: (vsim-3722) C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv(51): [TFMPC] - Missing connection for port 'done'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+# ** Error (suppressible): (vsim-3054) Port connection object port 'wren' must be 1 or 8-bit wide. The actual provided is 9-bit. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/fifo.sv(11).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/matrix_fifo[7] File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 85
+# ** Error: (vsim-8636) Conn. to port 'wren' has dim. of width 9, but inst. array dim. is 8.
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/matrix_fifo[7] File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 85
+# Error loading design
+# End time: 20:52:38 on Feb 04,2026, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 5
+# Compile of matvec_mult.sv was successful.
+vsim work.mult_tb -L altera_mf_ver -voptargs="+acc"
+# vsim work.mult_tb -L altera_mf_ver -voptargs=""+acc"" 
+# Start time: 20:53:11 on Feb 04,2026
+# Loading sv_std.std
+# Loading work.mult_tb
+# Loading work.matvec_mult
+# Loading work.fill_from_mem
+# Loading work.mem_wrapper
+# Loading work.rom
+# Loading altera_mf_ver.altsyncram
+# Loading work.FIFO
+# Loading work.matrix_mult
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.MAC
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+# ** Error (suppressible): (vsim-3054) Port connection object port 'wren' must be 1 or 8-bit wide. The actual provided is 9-bit. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/fifo.sv(11).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/matrix_fifo[7] File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 86
+# ** Error: (vsim-8636) Conn. to port 'wren' has dim. of width 9, but inst. array dim. is 8.
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/matrix_fifo[7] File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/matvec_mult.sv Line: 86
+# Error loading design
+# End time: 20:53:11 on Feb 04,2026, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 3
+# Compile of matvec_mult.sv was successful.
+vsim work.mult_tb -L altera_mf_ver -voptargs="+acc"
+# vsim work.mult_tb -L altera_mf_ver -voptargs=""+acc"" 
+# Start time: 20:54:52 on Feb 04,2026
+# Loading sv_std.std
+# Loading work.mult_tb
+# Loading work.matvec_mult
+# Loading work.fill_from_mem
+# Loading work.mem_wrapper
+# Loading work.rom
+# Loading altera_mf_ver.altsyncram
+# Loading work.FIFO
+# Loading work.matrix_mult
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.MAC
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+add wave -position insertpoint  \
+sim:/mult_tb/iDUT/clk \
+sim:/mult_tb/iDUT/rst_n \
+sim:/mult_tb/iDUT/Clr \
+sim:/mult_tb/iDUT/start \
+sim:/mult_tb/iDUT/done \
+sim:/mult_tb/iDUT/results \
+sim:/mult_tb/iDUT/all_fifos_full \
+sim:/mult_tb/iDUT/all_fifos_empty \
+sim:/mult_tb/iDUT/start_filler \
+sim:/mult_tb/iDUT/memory_busy \
+sim:/mult_tb/iDUT/matrix_fill_status \
+sim:/mult_tb/iDUT/matrix_empty_status \
+sim:/mult_tb/iDUT/vector_fill_status \
+sim:/mult_tb/iDUT/vector_empty_status \
+sim:/mult_tb/iDUT/FIFO_fill_data \
+sim:/mult_tb/iDUT/fifo_addr \
+sim:/mult_tb/iDUT/fifo_addr_conv \
+sim:/mult_tb/iDUT/fifo_addr_conv_vec \
+sim:/mult_tb/iDUT/FIFO_data_matrix \
+sim:/mult_tb/iDUT/FIFO_data_vector \
+sim:/mult_tb/iDUT/B_shift_reg \
+sim:/mult_tb/iDUT/MAC_enables \
+sim:/mult_tb/iDUT/MAC_enables_conv \
+sim:/mult_tb/iDUT/VEC_enable \
+sim:/mult_tb/iDUT/clr_mac_en \
+sim:/mult_tb/iDUT/current_state \
+sim:/mult_tb/iDUT/next_state
+run -all
+# Begin testing
+# ERROR: expected didn't match actual (iteration 0 - time 90 ns)
+# Index 0 didn't match, expected 68518 but was 0
+# Index 1 didn't match, expected 96039 but was 0
+# Index 2 didn't match, expected 94972 but was 0
+# Index 3 didn't match, expected 79242 but was 0
+# Index 4 didn't match, expected 87840 but was 0
+# Index 5 didn't match, expected 94565 but was 0
+# Index 6 didn't match, expected 125998 but was 0
+# Index 7 didn't match, expected 64473 but was 0
+# ERROR: expected didn't match actual (iteration 1 - time 120 ns)
+# Index 0 didn't match, expected 157152 but was 0
+# Index 1 didn't match, expected 186651 but was 0
+# Index 2 didn't match, expected 147559 but was 0
+# Index 3 didn't match, expected 150818 but was 0
+# Index 4 didn't match, expected 203972 but was 0
+# Index 5 didn't match, expected 155126 but was 0
+# Index 6 didn't match, expected 177140 but was 0
+# Index 7 didn't match, expected 129807 but was 0
+# ERROR: expected didn't match actual (iteration 2 - time 150 ns)
+# Index 0 didn't match, expected 242036 but was 0
+# Index 1 didn't match, expected 148488 but was 0
+# Index 2 didn't match, expected 227518 but was 0
+# Index 3 didn't match, expected 178616 but was 0
+# Index 4 didn't match, expected 114773 but was 0
+# Index 5 didn't match, expected 159864 but was 0
+# Index 6 didn't match, expected 173386 but was 0
+# Index 7 didn't match, expected 156518 but was 0
+# ERROR: expected didn't match actual (iteration 3 - time 180 ns)
+# Index 0 didn't match, expected 190134 but was 0
+# Index 1 didn't match, expected 124619 but was 0
+# Index 2 didn't match, expected 114437 but was 0
+# Index 3 didn't match, expected 157288 but was 0
+# Index 4 didn't match, expected 90646 but was 0
+# Index 5 didn't match, expected 142171 but was 0
+# Index 6 didn't match, expected 129302 but was 0
+# Index 7 didn't match, expected 155526 but was 0
+# ERROR: expected didn't match actual (iteration 4 - time 210 ns)
+# Index 0 didn't match, expected 79425 but was 0
+# Index 1 didn't match, expected 158306 but was 0
+# Index 2 didn't match, expected 129733 but was 0
+# Index 3 didn't match, expected 173784 but was 0
+# Index 4 didn't match, expected 95313 but was 0
+# Index 5 didn't match, expected 117529 but was 0
+# Index 6 didn't match, expected 158904 but was 0
+# Index 7 didn't match, expected 108400 but was 0
+# ERROR: expected didn't match actual (iteration 5 - time 240 ns)
+# Index 0 didn't match, expected 104845 but was 0
+# Index 1 didn't match, expected 96775 but was 0
+# Index 2 didn't match, expected 96369 but was 0
+# Index 3 didn't match, expected 133028 but was 0
+# Index 4 didn't match, expected 99822 but was 0
+# Index 5 didn't match, expected 86763 but was 0
+# Index 6 didn't match, expected 94882 but was 0
+# Index 7 didn't match, expected 83096 but was 0
+# ERROR: expected didn't match actual (iteration 6 - time 270 ns)
+# Index 0 didn't match, expected 201321 but was 0
+# Index 1 didn't match, expected 165786 but was 0
+# Index 2 didn't match, expected 168853 but was 0
+# Index 3 didn't match, expected 143749 but was 0
+# Index 4 didn't match, expected 108399 but was 0
+# Index 5 didn't match, expected 171265 but was 0
+# Index 6 didn't match, expected 138454 but was 0
+# Index 7 didn't match, expected 168041 but was 0
+# ERROR: expected didn't match actual (iteration 7 - time 300 ns)
+# Index 0 didn't match, expected 126519 but was 0
+# Index 1 didn't match, expected 139359 but was 0
+# Index 2 didn't match, expected 146980 but was 0
+# Index 3 didn't match, expected 133989 but was 0
+# Index 4 didn't match, expected 144904 but was 0
+# Index 5 didn't match, expected 135800 but was 0
+# Index 6 didn't match, expected 167386 but was 0
+# Index 7 didn't match, expected 112737 but was 0
+# ERROR: expected didn't match actual (iteration 8 - time 330 ns)
+# Index 0 didn't match, expected 151200 but was 0
+# Index 1 didn't match, expected 94608 but was 0
+# Index 2 didn't match, expected 122570 but was 0
+# Index 3 didn't match, expected 88334 but was 0
+# Index 4 didn't match, expected 103831 but was 0
+# Index 5 didn't match, expected 126189 but was 0
+# Index 6 didn't match, expected 102812 but was 0
+# Index 7 didn't match, expected 80871 but was 0
+# ERROR: expected didn't match actual (iteration 9 - time 360 ns)
+# Index 0 didn't match, expected 126440 but was 0
+# Index 1 didn't match, expected 136521 but was 0
+# Index 2 didn't match, expected 117911 but was 0
+# Index 3 didn't match, expected 128810 but was 0
+# Index 4 didn't match, expected 112570 but was 0
+# Index 5 didn't match, expected 88693 but was 0
+# Index 6 didn't match, expected 113656 but was 0
+# Index 7 didn't match, expected 94274 but was 0
+# ERROR: clear didn't actual clear
+# Check time 385
+# End testing
+# See output for fail details
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/mult_tb.sv(95)
+#    Time: 385 ps  Iteration: 1  Instance: /mult_tb
+# Break in Module mult_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/mult_tb.sv line 95
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Compile of fifo.sv was successful.
+# Compile of mac.sv was successful.
+# Compile of matvec_mult.sv was successful.
+# Compile of memory.v was successful.
+# Compile of rom.v was successful.
+# Compile of feed_from_mem.sv was successful.
+# Compile of feed_from_mem_tb.sv was successful.
+# Compile of mult_tb.sv was successful.
+# 8 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.mult_tb
+# Loading work.matvec_mult
+# Loading work.fill_from_mem
+# Loading work.mem_wrapper
+# Loading work.rom
+# Loading work.FIFO
+# Loading work.matrix_mult
+# Loading work.MAC
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# ERROR: expected didn't match actual (iteration 0 - time 80 ns)
+# Index 0 didn't match, expected 68518 but was 0
+# Index 1 didn't match, expected 96039 but was 0
+# Index 2 didn't match, expected 94972 but was 0
+# Index 3 didn't match, expected 79242 but was 0
+# Index 4 didn't match, expected 87840 but was 0
+# Index 5 didn't match, expected 94565 but was 0
+# Index 6 didn't match, expected 125998 but was 0
+# Index 7 didn't match, expected 64473 but was 0
+# ERROR: expected didn't match actual (iteration 1 - time 140 ns)
+# Index 0 didn't match, expected 157152 but was 0
+# Index 1 didn't match, expected 186651 but was 0
+# Index 2 didn't match, expected 147559 but was 0
+# Index 3 didn't match, expected 150818 but was 0
+# Index 4 didn't match, expected 203972 but was 0
+# Index 5 didn't match, expected 155126 but was 0
+# Index 6 didn't match, expected 177140 but was 0
+# Index 7 didn't match, expected 129807 but was 0
+# ERROR: expected didn't match actual (iteration 2 - time 200 ns)
+# Index 0 didn't match, expected 242036 but was 0
+# Index 1 didn't match, expected 148488 but was 0
+# Index 2 didn't match, expected 227518 but was 0
+# Index 3 didn't match, expected 178616 but was 0
+# Index 4 didn't match, expected 114773 but was 0
+# Index 5 didn't match, expected 159864 but was 0
+# Index 6 didn't match, expected 173386 but was 0
+# Index 7 didn't match, expected 156518 but was 0
+# ERROR: expected didn't match actual (iteration 3 - time 260 ns)
+# Index 0 didn't match, expected 190134 but was 0
+# Index 1 didn't match, expected 124619 but was 0
+# Index 2 didn't match, expected 114437 but was 0
+# Index 3 didn't match, expected 157288 but was 0
+# Index 4 didn't match, expected 90646 but was 0
+# Index 5 didn't match, expected 142171 but was 0
+# Index 6 didn't match, expected 129302 but was 0
+# Index 7 didn't match, expected 155526 but was 0
+# ERROR: expected didn't match actual (iteration 4 - time 320 ns)
+# Index 0 didn't match, expected 79425 but was 0
+# Index 1 didn't match, expected 158306 but was 0
+# Index 2 didn't match, expected 129733 but was 0
+# Index 3 didn't match, expected 173784 but was 0
+# Index 4 didn't match, expected 95313 but was 0
+# Index 5 didn't match, expected 117529 but was 0
+# Index 6 didn't match, expected 158904 but was 0
+# Index 7 didn't match, expected 108400 but was 0
+# ERROR: expected didn't match actual (iteration 5 - time 380 ns)
+# Index 0 didn't match, expected 104845 but was 0
+# Index 1 didn't match, expected 96775 but was 0
+# Index 2 didn't match, expected 96369 but was 0
+# Index 3 didn't match, expected 133028 but was 0
+# Index 4 didn't match, expected 99822 but was 0
+# Index 5 didn't match, expected 86763 but was 0
+# Index 6 didn't match, expected 94882 but was 0
+# Index 7 didn't match, expected 83096 but was 0
+# ERROR: expected didn't match actual (iteration 6 - time 440 ns)
+# Index 0 didn't match, expected 201321 but was 0
+# Index 1 didn't match, expected 165786 but was 0
+# Index 2 didn't match, expected 168853 but was 0
+# Index 3 didn't match, expected 143749 but was 0
+# Index 4 didn't match, expected 108399 but was 0
+# Index 5 didn't match, expected 171265 but was 0
+# Index 6 didn't match, expected 138454 but was 0
+# Index 7 didn't match, expected 168041 but was 0
+# ERROR: expected didn't match actual (iteration 7 - time 500 ns)
+# Index 0 didn't match, expected 126519 but was 0
+# Index 1 didn't match, expected 139359 but was 0
+# Index 2 didn't match, expected 146980 but was 0
+# Index 3 didn't match, expected 133989 but was 0
+# Index 4 didn't match, expected 144904 but was 0
+# Index 5 didn't match, expected 135800 but was 0
+# Index 6 didn't match, expected 167386 but was 0
+# Index 7 didn't match, expected 112737 but was 0
+# ERROR: expected didn't match actual (iteration 8 - time 560 ns)
+# Index 0 didn't match, expected 151200 but was 0
+# Index 1 didn't match, expected 94608 but was 0
+# Index 2 didn't match, expected 122570 but was 0
+# Index 3 didn't match, expected 88334 but was 0
+# Index 4 didn't match, expected 103831 but was 0
+# Index 5 didn't match, expected 126189 but was 0
+# Index 6 didn't match, expected 102812 but was 0
+# Index 7 didn't match, expected 80871 but was 0
+# ERROR: expected didn't match actual (iteration 9 - time 620 ns)
+# Index 0 didn't match, expected 126440 but was 0
+# Index 1 didn't match, expected 136521 but was 0
+# Index 2 didn't match, expected 117911 but was 0
+# Index 3 didn't match, expected 128810 but was 0
+# Index 4 didn't match, expected 112570 but was 0
+# Index 5 didn't match, expected 88693 but was 0
+# Index 6 didn't match, expected 113656 but was 0
+# Index 7 didn't match, expected 94274 but was 0
+# ERROR: clear didn't actual clear
+# Check time 645
+# End testing
+# See output for fail details
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/mult_tb.sv(101)
+#    Time: 645 ps  Iteration: 1  Instance: /mult_tb
+# Break in Module mult_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/mult_tb.sv line 101
+# Compile of m_tb.sv failed with 5 errors.
+# Compile of m_tb.sv failed with 3 errors.
+# Compile of m_tb.sv was successful.
+quit -sim
+# End time: 21:04:31 on Feb 04,2026, Elapsed time: 0:09:39
+# Errors: 0, Warnings: 7
+vsim work.m_tb -L altera_mf_ver -voptargs="+acc"
+# vsim work.m_tb -L altera_mf_ver -voptargs=""+acc"" 
+# Start time: 21:04:38 on Feb 04,2026
+# ** Error: (vsim-3170) Could not find 'm_tb'.
+#         Searched libraries:
+#             C:/intelFPGA/20.1/modelsim_ase/altera/verilog/altera_mf
+#             C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/work
+# Error loading design
+# End time: 21:04:39 on Feb 04,2026, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 1
+# Compile of m_tb.sv was successful.
+vsim work.m_tb -L altera_mf_ver -voptargs="+acc"
+# vsim work.m_tb -L altera_mf_ver -voptargs=""+acc"" 
+# Start time: 21:04:51 on Feb 04,2026
+# Loading sv_std.std
+# Loading work.m_tb
+# Loading work.matvec_mult
+# Loading work.fill_from_mem
+# Loading work.mem_wrapper
+# Loading work.rom
+# Loading altera_mf_ver.altsyncram
+# Loading work.FIFO
+# Loading work.matrix_mult
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.MAC
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+add wave -position insertpoint  \
+sim:/m_tb/iDUT/clk \
+sim:/m_tb/iDUT/rst_n \
+sim:/m_tb/iDUT/Clr \
+sim:/m_tb/iDUT/start \
+sim:/m_tb/iDUT/done \
+sim:/m_tb/iDUT/results \
+sim:/m_tb/iDUT/all_fifos_full \
+sim:/m_tb/iDUT/all_fifos_empty \
+sim:/m_tb/iDUT/start_filler \
+sim:/m_tb/iDUT/memory_busy \
+sim:/m_tb/iDUT/matrix_fill_status \
+sim:/m_tb/iDUT/matrix_empty_status \
+sim:/m_tb/iDUT/vector_fill_status \
+sim:/m_tb/iDUT/vector_empty_status \
+sim:/m_tb/iDUT/FIFO_fill_data \
+sim:/m_tb/iDUT/fifo_addr \
+sim:/m_tb/iDUT/fifo_addr_conv \
+sim:/m_tb/iDUT/fifo_addr_conv_vec \
+sim:/m_tb/iDUT/FIFO_data_matrix \
+sim:/m_tb/iDUT/FIFO_data_vector \
+sim:/m_tb/iDUT/B_shift_reg \
+sim:/m_tb/iDUT/MAC_enables \
+sim:/m_tb/iDUT/MAC_enables_conv \
+sim:/m_tb/iDUT/VEC_enable \
+sim:/m_tb/iDUT/clr_mac_en \
+sim:/m_tb/iDUT/current_state \
+sim:/m_tb/iDUT/next_state
+run -all
+# Begin testing
+# Test Failed: Timeout occurred before completion
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
+#    Time: 10050 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
+# Compile of m_tb.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.m_tb
+# Loading work.matrix_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000000
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
+#    Time: 10050 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
+# Compile of m_tb.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.m_tb
+# Loading work.matrix_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Test Failed: Timeout occurred before completion
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
+#    Time: 690 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
+# Compile of matvec_mult.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matvec_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Test Failed: Timeout occurred before completion
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
+#    Time: 690 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
+add wave -position insertpoint  \
+sim:/m_tb/iDUT/iFIFOFILLER/addr \
+sim:/m_tb/iDUT/iFIFOFILLER/fill \
+sim:/m_tb/iDUT/iFIFOFILLER/dataByte \
+sim:/m_tb/iDUT/iFIFOFILLER/fifoEnable \
+sim:/m_tb/iDUT/iFIFOFILLER/done \
+sim:/m_tb/iDUT/iFIFOFILLER/memory_busy \
+sim:/m_tb/iDUT/iFIFOFILLER/state \
+sim:/m_tb/iDUT/iFIFOFILLER/curAddr \
+sim:/m_tb/iDUT/iFIFOFILLER/memRead \
+sim:/m_tb/iDUT/iFIFOFILLER/memDone \
+sim:/m_tb/iDUT/iFIFOFILLER/memInUse \
+sim:/m_tb/iDUT/iFIFOFILLER/memData \
+sim:/m_tb/iDUT/iFIFOFILLER/data \
+sim:/m_tb/iDUT/iFIFOFILLER/fifoCTR \
+sim:/m_tb/iDUT/iFIFOFILLER/writeEn \
+sim:/m_tb/iDUT/iFIFOFILLER/byteCTR
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Test Failed: Timeout occurred before completion
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
+#    Time: 690 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
+# Compile of feed_from_mem.sv failed with 8 errors.
+# Compile of feed_from_mem.sv was successful.
+# Compile of feed_from_mem.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.fill_from_mem
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Test Failed: Timeout occurred before completion
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
+#    Time: 690 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
+add wave -position insertpoint  \
+{sim:/m_tb/iDUT/matrix_fifo[0]/fifo_mem}
+add wave -position insertpoint  \
+{sim:/m_tb/iDUT/matrix_fifo[7]/fifo_mem}
+add wave -position insertpoint  \
+sim:/m_tb/iDUT/vector_fifo/fifo_mem
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Test Failed: Timeout occurred before completion
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
+#    Time: 690 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
+# Compile of m_tb.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.m_tb
+# Loading work.matrix_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 007a31
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 00d022
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 0104c3
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00f58c
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 008485
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 003566
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 0008f7
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000000
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
+#    Time: 4310 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 007a31
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 00d022
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 0104c3
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00f58c
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 008485
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 003566
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 0008f7
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000000
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
+#    Time: 4310 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 007a31
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 00d022
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 0104c3
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00f58c
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 008485
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 003566
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 0008f7
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000000
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
+#    Time: 4310 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
+# Compile of feed_from_mem.sv was successful.
+# Compile of m_tb.sv was successful.
+# 2 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.m_tb
+# Loading work.fill_from_mem
+# Loading work.matrix_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 003bf7
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 009b66
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 00d985
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00f58c
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 008485
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 003566
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 0008f7
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000000
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
+#    Time: 2380 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
+# Compile of m_tb.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.m_tb
+# Loading work.matrix_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 233
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 003bf7
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 009b66
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 00d985
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00f58c
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 008485
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 003566
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 0008f7
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000000
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 2380 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+# A time value could not be extracted from the current line
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 233
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 003bf7
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 009b66
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 00d985
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00f58c
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 008485
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 003566
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 0008f7
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000000
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 2380 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Compile of matvec_mult.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matvec_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 233
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 003bf7
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 009b66
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 00d985
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00f58c
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 008485
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 003566
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 0008f7
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000000
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 2380 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+# Compile of matvec_mult.sv was successful with warnings.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matvec_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 1000
+# Test Failed: Timeout occurred before completion
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 10050 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+# Compile of matvec_mult.sv was successful with warnings.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matvec_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 1000
+# Test Failed: Timeout occurred before completion
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 10050 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+# Compile of matvec_mult.sv was successful.
+# Compile of feed_from_mem.sv was successful.
+# 2 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matvec_mult
+# Loading work.fill_from_mem
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 233
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 003bf7
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 009b66
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 00d985
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00f58c
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 008485
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 003566
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 0008f7
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000000
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 2380 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+add wave -position insertpoint  \
+{sim:/m_tb/iDUT/iMAC[0]/Ain} \
+{sim:/m_tb/iDUT/iMAC[0]/Bin} \
+{sim:/m_tb/iDUT/iMAC[0]/Cout}
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 233
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 003bf7
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 009b66
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 00d985
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00f58c
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 008485
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 003566
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 0008f7
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000000
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 2380 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+add wave -position insertpoint  \
+{sim:/m_tb/iDUT/iMAC[7]/Ain} \
+{sim:/m_tb/iDUT/iMAC[7]/Bin} \
+{sim:/m_tb/iDUT/iMAC[7]/Cout}
+# Compile of matvec_mult.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matvec_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 233
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000000
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 2380 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+# Compile of matvec_mult.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matvec_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 233
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 0166c0
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 013510
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 010360
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00d1b0
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 00a000
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 006e50
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 003ca0
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000af0
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 2380 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+# Compile of matvec_mult.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matvec_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 234
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 0135d0
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 010480
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00d330
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 00a1e0
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 007090
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 003f40
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000df0
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 2390 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+add wave -position insertpoint  \
+sim:/m_tb/iDUT/vector_fifo/rden \
+sim:/m_tb/iDUT/vector_fifo/o_data
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 234
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 000000
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 0135d0
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 010480
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00d330
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 00a1e0
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 007090
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 003f40
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000df0
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 2390 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+# Compile of matvec_mult.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matvec_mult
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 234
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 01a2cc
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 01690c
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 012f4c
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00f58c
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 00bbcc
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 00820c
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 00484c
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000e8c
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 2390 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+# Compile of feed_from_mem.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.fill_from_mem
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 1000
+# Test Failed: Timeout occurred before completion
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 10050 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82
+# Compile of feed_from_mem.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.fill_from_mem
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /m_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Timeout Counter: 234
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 01a2cc
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 01690c
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 012f4c
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 00f58c
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 00bbcc
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 00820c
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 00484c
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 000e8c
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(82)
+#    Time: 2390 ps  Iteration: 1  Instance: /m_tb
+# Break in Module m_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 82

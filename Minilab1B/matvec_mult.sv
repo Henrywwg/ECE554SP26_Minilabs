@@ -20,7 +20,7 @@ logic vector_fill_status, vector_empty_status;
 logic [7:0]FIFO_fill_data;
 
 logic [8:0]fifo_addr; //raw one hot encoding from memory interfacer
-logic fifo_addr_conv[8:0];
+logic fifo_addr_conv[7:0];
 logic fifo_addr_conv_vec;
 
 logic [7:0]FIFO_data_matrix[0:7];
@@ -28,7 +28,7 @@ logic [7:0]FIFO_data_vector;
 
 logic [7:0] B_shift_reg[0:7]; //8 wide shift (8x8) register for B inputs to MACs
 
-reg [15:0] MAC_enables; //one enable per MAC unit (but add 8 bit depth to simplify shift register)
+reg [8:0] MAC_enables; //one enable per MAC unit (but add 8 bit depth to simplify shift register)
 wire MAC_enables_conv[7:0];
 wire VEC_enable;
 logic clr_mac_en;
@@ -48,13 +48,15 @@ assign all_fifos_empty  = &{matrix_empty_status[7], matrix_empty_status[6], matr
 // memory interfacer which will spit out one 
 // byte at a time to the FIFO's instantiated further down
 // encoding is one hot for the FIFOs
-feed_from_mem iFIFOFILLER (
+fill_from_mem iFIFOFILLER (
     .clk(clk),
     .rst_n(rst_n),
-    .fifo_addr(fifo_addr),      //one hot encoding
-    .fifo_din(FIFO_fill_data),  //one byte input
-    .fill(start_filler),        //input to start iFIFOFILLER
-    .memory_busy(memory_busy)   //output of memory controller
+    .addr(32'h0000_0000),        //starting address for matrix/vector data in memory
+    .fill(start_filler),        //input to start filling process
+    .fifoEnable(fifo_addr),      //one hot encoding (fifo address basically)
+    .dataByte(FIFO_fill_data),  //one byte output from memory to FIFO's
+    .memory_busy(memory_busy),   //output of memory controller
+    .done( )                     //done signal from filler (not used here
 );
 // Above module is in progress so final ports may differ
 
@@ -72,11 +74,11 @@ assign fifo_addr_conv_vec = fifo_addr[8] & (current_state == FILL);
 genvar j;
 generate    // convert MAC enables for MAC units; MAC enables are the same as the read enables for matrix FIFOs
     for(j=0; j<8; j=j+1) begin : MAC_EN_CONV_LOOP
-        assign MAC_enables_conv[j] = MAC_enables[j+8];
+        assign MAC_enables_conv[j] = MAC_enables[j];
     end
 endgenerate
 
-assign VEC_enable = MAC_enables_conv[0]; //vector FIFO read enable is the same as the first MAC/FIFO read enable
+assign VEC_enable = MAC_enables[8]; //vector FIFO read enable is the same as the first MAC/FIFO read enable
 
 
 
@@ -120,11 +122,11 @@ MAC iMAC[0:7](
 //MAC enable and B input shift register chaining logic
 always_ff @(posedge clk) begin
     if(clr_mac_en) begin
-        MAC_enables <= 16'h00FF; //disable all MACs
+        MAC_enables <= 9'h000; //disable all MACs
         B_shift_reg <= '{default: 8'h00}; //clear shift register
     end
     else begin
-        MAC_enables <= {MAC_enables[14:0], 1'b0}; //shift left enables
+        MAC_enables <= {1'b1, MAC_enables[8:1]}; //shift left enables
         // Shift register: load new data from vector FIFO and shift existing data
         B_shift_reg[0] <= FIFO_data_vector;
         B_shift_reg[1] <= B_shift_reg[0];
