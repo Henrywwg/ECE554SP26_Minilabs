@@ -12,3 +12,15 @@ work/**
 work/
 /work/
 *.log
+
+#ignore Quartus generated files
+*.qpf
+*.qsf
+*.sld
+mat_vec_harness*
+mat_vec_harness.*
+
+db/
+incremental_db/
+work/
+ip/

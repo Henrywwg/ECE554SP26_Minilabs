@@ -158,3 +158,42 @@ run -all
 # ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
 #    Time: 2390 ps  Iteration: 1  Instance: /mult_tb
 # Break in Module mult_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+add wave -position insertpoint  \
+{sim:/mult_tb/iDUT/iMAC[0]/Ain} \
+{sim:/mult_tb/iDUT/iMAC[0]/Bin}
+add wave -position insertpoint  \
+{sim:/mult_tb/iDUT/iMAC[7]/Ain} \
+{sim:/mult_tb/iDUT/iMAC[7]/Bin}
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /mult_tb/iDUT/iFIFOFILLER/MEM/memory File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Begin testing
+# Warning : Address pointed at port A is out of bound!
+# Time: 2225  Instance: mult_tb.iDUT.iFIFOFILLER.MEM.memory.altsyncram_component.m_default.altsyncram_inst
+# Warning : Address pointed at port A is out of bound!
+# Time: 2225  Instance: mult_tb.iDUT.iFIFOFILLER.MEM.memory.altsyncram_component.m_default.altsyncram_inst
+# Test Failed: Mismatch at index 0. Expected: xxxxxx, Got: 01e28c
+# Test Failed: Mismatch at index 1. Expected: xxxxxx, Got: 01a04c
+# Test Failed: Mismatch at index 2. Expected: xxxxxx, Got: 015e0c
+# Test Failed: Mismatch at index 3. Expected: xxxxxx, Got: 011bcc
+# Test Failed: Mismatch at index 4. Expected: xxxxxx, Got: 00d98c
+# Test Failed: Mismatch at index 5. Expected: xxxxxx, Got: 00974c
+# Test Failed: Mismatch at index 6. Expected: xxxxxx, Got: 00550c
+# Test Failed: Mismatch at index 7. Expected: xxxxxx, Got: 0012cc
+# ** Note: $stop    : C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv(80)
+#    Time: 2390 ps  Iteration: 1  Instance: /mult_tb
+# Break in Module mult_tb at C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab1B/m_tb.sv line 80
