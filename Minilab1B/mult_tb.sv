@@ -1,3 +1,5 @@
+`timescale 1 ps / 1 ps
+
 module mult_tb();
 
     parameter NUM_ITERATIONS = 10;
@@ -16,7 +18,13 @@ module mult_tb();
     reg failed;
 
     // TODO: Instantiate DUT
-    matvec_mult iDUT (.clk(clk), .rst(rst_n), .Clr(Clr), .start(start), .done(done), .result(actualC));
+    matvec_mult iDUT (
+        .clk(clk), 
+        .rst_n(rst_n), 
+        .Clr(Clr), 
+        .start(start), 
+        .done(done), 
+        .results(actualC));
 
     // Checker - see below
     matrix_mult expectedOutput(.A(A), .B(B), .C(expectedC), .clk(clk), .rst_n(rst_n));
@@ -30,7 +38,7 @@ module mult_tb();
         failed = 1'b0; // Innocent until proven guilty
         Clr = 1'b0;
         start = 1'b0;
-        repeat (5) @(negedge clk);
+        repeat (1) @(negedge clk);
 
         // Get ready for testing
         rst_n = 1'b1;
@@ -40,7 +48,13 @@ module mult_tb();
         for (integer iteration = 0; iteration < NUM_ITERATIONS; iteration = iteration + 1) begin
             
             // TODO: Reset MAC and FIFO (if needed)
+            @(negedge clk);
             Clr = 1'b1;
+            @(negedge clk);
+            Clr = 1'b0;
+            start = 1'b1;
+            @(negedge clk);
+            start = 1'b0;
             // Get new data for A and B
             @(negedge clk);
             for (integer x = 0; x < 8; x = x + 1) begin

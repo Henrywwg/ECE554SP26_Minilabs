@@ -1,3 +1,5 @@
+`timescale 1 ps / 1 ps
+
 module feed_from_mem_tb();
 
     parameter NUM_FIFOS=9;
@@ -11,7 +13,7 @@ module feed_from_mem_tb();
     wire [DATA_WIDTH-1:0] dataByte;
     wire [NUM_FIFOS-1:0] fifoEnable;
 
-    feed_from_mem iDUT (
+    fill_from_mem iDUT (
         // System Controls
         .clk(clk),
         .rst_n(rst_n),
