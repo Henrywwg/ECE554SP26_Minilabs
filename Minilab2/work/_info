@@ -1,0 +1,130 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/18.1
+vedge_detect
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+!s110 1770696904
+!i10b 1
+!s100 ;W7iR`@V<j?R=V]iM=m6j2
+Iazke_5g89EP<3g[Fg0QUS3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+!s105 edge_detect_sv_unit
+S1
+Z2 dE:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2
+w1770694402
+8E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/edge_detect.sv
+FE:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/edge_detect.sv
+L0 3
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1770696904.000000
+!s107 E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/edge_detect.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/edge_detect.sv|
+!i113 1
+Z4 o-work work -sv
+Z5 tCvgOpt 0
+vedge_detect_tb
+R0
+!s110 1770698639
+!i10b 1
+!s100 1]0@^>XaR06RY<hVJ0hdY2
+I4j0DdQgh2fUi2<DLEUVgj2
+R1
+!s105 edge_detect_tb_sv_unit
+S1
+R2
+w1770698634
+8E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/edge_detect_tb.sv
+FE:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/edge_detect_tb.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1770698639.000000
+!s107 E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/edge_detect_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/edge_detect_tb.sv|
+!i113 1
+R4
+R5
+vgrayscale
+R0
+Z6 !s110 1770696905
+!i10b 1
+!s100 LEnTzg4To;[aeON1hTT1T3
+I[n5O;DbY?nbOAa24i]0zP2
+R1
+!s105 grayscale_sv_unit
+S1
+R2
+w1770682688
+8E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/grayscale.sv
+FE:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/grayscale.sv
+L0 1
+R3
+r1
+!s85 0
+31
+Z7 !s108 1770696905.000000
+!s107 E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/grayscale.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/grayscale.sv|
+!i113 1
+R4
+R5
+vrow_buffer
+R0
+!s110 1770696994
+!i10b 1
+!s100 ?iPd<:B4V4[SDbi[Zz@5P1
+INmiEHIYa3_7^<R8GjL`^D3
+R1
+!s105 row_buffer_sv_unit
+S1
+R2
+w1770696988
+8E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/row_buffer.sv
+FE:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/row_buffer.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1770696994.000000
+!s107 E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/row_buffer.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/row_buffer.sv|
+!i113 1
+R4
+R5
+vshiftreg_tb
+R0
+R6
+!i10b 1
+!s100 jM@h`i=Wb^Im>o<R[CBg=2
+INW1CMKLhBM]W^O:K^nY=m2
+R1
+!s105 shiftreg_tb_sv_unit
+S1
+R2
+w1770696900
+8E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/shiftreg_tb.sv
+FE:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/shiftreg_tb.sv
+L0 1
+R3
+r1
+!s85 0
+31
+R7
+!s107 E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/shiftreg_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/shiftreg_tb.sv|
+!i113 1
+R4
+R5

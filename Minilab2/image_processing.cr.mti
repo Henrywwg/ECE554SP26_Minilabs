@@ -1,0 +1,39 @@
+{E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/edge_detect.sv} {1 {vlog -work work -sv -stats=none {E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/edge_detect.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module edge_detect
+
+Top level modules:
+	edge_detect
+
+} {} {}} {E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/shiftreg_tb.sv} {1 {vlog -work work -sv -stats=none {E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/shiftreg_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module shiftreg_tb
+
+Top level modules:
+	shiftreg_tb
+
+} {} {}} {E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/row_buffer.sv} {1 {vlog -work work -sv -stats=none {E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/row_buffer.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module row_buffer
+
+Top level modules:
+	row_buffer
+
+} {} {}} {E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/edge_detect_tb.sv} {1 {vlog -work work -sv -stats=none {E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/edge_detect_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module edge_detect_tb
+
+Top level modules:
+	edge_detect_tb
+
+} {} {}} {E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/filter.sv} {1 {vlog -work work -sv -stats=none {E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/filter.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+
+} {} {}} {E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/grayscale.sv} {1 {vlog -work work -sv -stats=none {E:/Other computers/My Laptop/programming/verilog/554/ECE554SP26_Minilabs/Minilab2/grayscale.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module grayscale
+
+Top level modules:
+	grayscale
+
+} {} {}}
