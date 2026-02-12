@@ -72,6 +72,7 @@ module Minilab2(
 
 wire			VGA_CTRL_CLK;
 wire 	[11:0]	edge_pixel_out;
+wire 	[11:0]	gray_pixel;
 
 
 
@@ -98,6 +99,8 @@ wire	       	[11:0]			sCCD_R;
 wire	       	[11:0]			sCCD_G;
 wire	       	[11:0]			sCCD_B;
 wire							sCCD_DVAL;
+reg								sCCD_DVAL_d1;
+reg								sCCD_DVAL_d2;
 
 wire							sdram_ctrl_clk;
 wire	       	[9:0]			oVGA_R;   				//	VGA Red[9:0]
@@ -108,7 +111,6 @@ wire	       	[9:0]			oVGA_B;   				//	VGA Blue[9:0]
 //=======================================================
 //  Structural coding
 //=======================================================
-
 
 assign	D5M_TRIGGER	=	1'b1;  // tRIGGER
 assign	D5M_RESET_N	=	DLY_RST_1;
@@ -125,25 +127,27 @@ assign  VGA_B = oVGA_B[9:2];
 
 // Instantiate edge_detect module
 edge_detect iED(
-	.clk(D5M_PIXLCLK),
+	.clk(D5M_PIXCLK),
 	.rst_n(DLY_RST_1),
 	.filter_type(SW[8]),
 	.valid(sCCD_DVAL),
 	.x_cntr(X_Cont[10:1]),
 	.y_cntr(Y_Cont[10:1]),
-	.pixel_r(sCCD_R),
-	.pixel_g(sCCD_G),
-	.pixel_b(sCCD_B),
+	.pixel_in(gray_pixel),
 	.pixel_out(edge_pixel_out)
 );
 
 
 //D5M read 
-always@(posedge D5M_PIXLCLK)
+always@(posedge D5M_PIXCLK)
 begin
 	rCCD_DATA	<=	D5M_D;
 	rCCD_LVAL	<=	D5M_LVAL;
 	rCCD_FVAL	<=	D5M_FVAL;
+	
+	// Delay sCCD_DVAL by 2 cycles to match edge_detect pipeline latency
+	sCCD_DVAL_d1 <= sCCD_DVAL;
+	sCCD_DVAL_d2 <= sCCD_DVAL_d1;
 end
 
 
@@ -171,18 +175,17 @@ CCD_Capture			u3	(
 							.iLVAL(rCCD_LVAL),
 							.iSTART(!KEY[3]|auto_start),
 							.iEND(!KEY[2]),
-							.iCLK(~D5M_PIXLCLK),
+							.iCLK(~D5M_PIXCLK),
 							.iRST(DLY_RST_2)
 						   );
+						   
 //D5M raw date convert to RGB data
-RAW2RGB				u4	(	
-							.iCLK(D5M_PIXLCLK),
+RAW2GRAY				u4	(	
+							.iCLK(D5M_PIXCLK),
 							.iRST(DLY_RST_1),
 							.iDATA(mCCD_DATA),
 							.iDVAL(mCCD_DVAL),
-							.oRed(sCCD_R),
-							.oGreen(sCCD_G),
-							.oBlue(sCCD_B),
+							.oPixel(gray_pixel),
 							.oDVAL(sCCD_DVAL),
 							.iX_Cont(X_Cont),
 							.iY_Cont(Y_Cont)
@@ -215,22 +218,22 @@ Sdram_Control	   u7	(	//	HOST Side
 							.CLK(sdram_ctrl_clk),
 
 							//	FIFO Write Side 1
-							.WR1_DATA({1'b0,edge_pixel_out[11:7],edge_pixel_out[11:2]}),
+							.WR1_DATA({1'b0,gray_pixel[9:5],gray_pixel[9:0]}),
 							.WR1(sCCD_DVAL),
 							.WR1_ADDR(0),
-                     .WR1_MAX_ADDR(640*480),
-						   .WR1_LENGTH(8'h50),
-		               .WR1_LOAD(!DLY_RST_0),
-							.WR1_CLK(~D5M_PIXLCLK),
+                     		.WR1_MAX_ADDR(640*480),
+						   	.WR1_LENGTH(8'h50),
+		               		.WR1_LOAD(!DLY_RST_0),
+							.WR1_CLK(~D5M_PIXCLK),
 
 							//	FIFO Write Side 2
-							.WR2_DATA({1'b0,edge_pixel_out[6:2],edge_pixel_out[11:2]}),
+							.WR2_DATA({1'b0,gray_pixel[4:0],gray_pixel[9:0]}),
 							.WR2(sCCD_DVAL),
 							.WR2_ADDR(23'h100000),
 							.WR2_MAX_ADDR(23'h100000+640*480),
 							.WR2_LENGTH(8'h50),
 							.WR2_LOAD(!DLY_RST_0),				
-							.WR2_CLK(~D5M_PIXLCLK),
+							.WR2_CLK(~D5M_PIXCLK),
 
                      //	FIFO Read Side 1
 						   .RD1_DATA(Read_DATA1),

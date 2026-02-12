@@ -255,6 +255,9 @@ wire	       [9:0]			oVGA_R;   				//	VGA Red[9:0]
 wire	       [9:0]			oVGA_G;	 				//	VGA Green[9:0]
 wire	       [9:0]			oVGA_B;   				//	VGA Blue[9:0]
 
+wire         [11:0]      gray_pixel;             // Grayscale pixel output from RAW2GRAY
+wire         [11:0]      edge_pixel_out;          // Edge-detected pixel output from edge_detect
+
 //power on start
 wire             				auto_start;
 //=======================================================
@@ -310,19 +313,47 @@ CCD_Capture			u3	(
 							.iRST(DLY_RST_2)
 						   );
 //D5M raw date convert to RGB data
-RAW2RGB				u4	(	
+// RAW2RGB				u4	(	
+// 							.iCLK(D5M_PIXLCLK),
+// 							.iRST(DLY_RST_1),
+// 							.iDATA(mCCD_DATA),
+// 							.iDVAL(mCCD_DVAL),
+// 							.oRed(sCCD_R),
+// 							.oGreen(sCCD_G),
+// 							.oBlue(sCCD_B),
+// 							.oDVAL(sCCD_DVAL),
+// 							.iX_Cont(X_Cont),
+// 							.iY_Cont(Y_Cont)
+// 						   );
+
+
+RAW2GRAY				u4	(	
 							.iCLK(D5M_PIXLCLK),
 							.iRST(DLY_RST_1),
 							.iDATA(mCCD_DATA),
 							.iDVAL(mCCD_DVAL),
-							.oRed(sCCD_R),
-							.oGreen(sCCD_G),
-							.oBlue(sCCD_B),
+							.oPixel(gray_pixel),
 							.oDVAL(sCCD_DVAL),
 							.iX_Cont(X_Cont),
 							.iY_Cont(Y_Cont)
 						   );
 
+
+// Instantiate edge_detect module
+edge_detect iED(
+	.clk(D5M_PIXLCLK),
+	.rst_n(DLY_RST_1),
+	.filter_type(SW[8]),
+	.valid(sCCD_DVAL),
+	.x_cntr(X_Cont[10:1]),
+	.y_cntr(Y_Cont[10:1]),
+	.pixel_in(gray_pixel),
+	.pixel_out(edge_pixel_out)
+);
+
+assign sCCD_R = edge_pixel_out;
+assign sCCD_G = edge_pixel_out;
+assign sCCD_B = edge_pixel_out;
 
 //Frame count display
 SEG7_LUT_6 			u5	(	
@@ -409,6 +440,8 @@ I2C_CCD_Config 	u8	(	//	Host Side
 							.I2C_SCLK(D5M_SCLK),
 							.I2C_SDAT(D5M_SDATA)
 						   );
+
+
 //VGA DISPLAY
 VGA_Controller	  u1	(	//	Host Side
 							.oRequest(Read),

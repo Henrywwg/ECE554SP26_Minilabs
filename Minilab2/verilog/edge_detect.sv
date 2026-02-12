@@ -1,4 +1,10 @@
-//Lots of opportunity for pipelining here
+// --------------------------------------------------------------------
+// By: Henry Wysong
+// Date: 02/xx/26
+// --------------------------------------------------------------------
+//   Project: ECE 554 - Minilab 2
+//   File: edge_detect.sv
+//   Description: This module performs edge detection on a grayscale image using the Sobel operator.
 
 module edge_detect(
     input wire clk,
@@ -7,15 +13,12 @@ module edge_detect(
     input wire valid,
     input wire [9:0] x_cntr, //must be >>1.
     input wire [9:0] y_cntr, //must be >>1. 
-    input wire [11:0] pixel_r,  
-    input wire [11:0] pixel_g,
-    input wire [11:0] pixel_b,
+    input wire [11:0] pixel_in, // Grayscale pixel input
     output wire [11:0] pixel_out
 );
 
 
 // Internal signals
-wire [11:0] gray_pixel; // Grayscale pixel value
 reg signed [14:0] edge_value_v; // Output of the edge detection filter (can be negative, so signed)
 reg signed [14:0] edge_value_h; // Intermediate value for horizontal edge detection
 reg [14:0] edge_value_v_u; // Output of the edge detection filter (can be negative, so signed)
@@ -27,17 +30,8 @@ assign in_bounds = (x_cntr > 1) && (x_cntr < 638) && (y_cntr > 1) && (y_cntr < 4
 reg signed [12:0] cur_pix_mat [0:2][0:2]; // Current 9 pixels for edge detection (3x3 matrix)
 
 // wires holding output of each row buffer
-// wire gray_pixel;   current pixel in grayscale
 wire [11:0] row1_out; // Output of the first row buffer (current row)
 wire [11:0] row2_out; // Output of the second row buffer (previous row)
-
-// convert to grayscale
-grayscale iGS (
-    .r(pixel_r),
-    .g(pixel_g),
-    .b(pixel_b),
-    .gray(gray_pixel)
-);
 
 // Simple edge detection using a 3x3 Sobel operator
 //Instantiate row buffers to hold the previous two rows of pixel data
@@ -45,7 +39,7 @@ row_buffer iR1 (        //current row buffer
     .clk(clk),
     .rst_n(rst_n),
     .en(valid),
-    .pixel_in(gray_pixel),
+    .pixel_in(pixel_in), // Feed the current pixel into the first row buffer
     .pixel_out(row1_out)
 );
 
@@ -61,7 +55,7 @@ row_buffer iR2 (        //previous row buffer
 // Shift current window
 always_ff @(posedge clk) begin
     if(valid) begin
-        cur_pix_mat[2][0] <= gray_pixel; // Current pixel
+        cur_pix_mat[2][0] <= pixel_in; // Current pixel
         cur_pix_mat[2][1] <= cur_pix_mat[2][0]; // Shift right
         cur_pix_mat[2][2] <= cur_pix_mat[2][1]; // Shift right
 
@@ -93,6 +87,6 @@ always_ff @(posedge clk) begin
 end
 
 assign pixel_out = filter_type ? 
-    (edge_value_v_u > 15'd4095 ? 12'hFFF : edge_value_v_u[11:0]) :
-    (edge_value_h_u > 15'd4095 ? 12'hFFF : edge_value_h_u[11:0]); // Output the edge value, capped at 4095 for 12-bit output
+                (edge_value_v_u > 15'd4095 ? 12'hFFF : edge_value_v_u[11:0]) :
+                (edge_value_h_u > 15'd4095 ? 12'hFFF : edge_value_h_u[11:0]); // Output the edge value, capped at 4095 for 12-bit output
 endmodule

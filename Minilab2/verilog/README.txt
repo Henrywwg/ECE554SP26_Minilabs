@@ -1,0 +1,1 @@
+All files that are user generated (written by me) are .sv files. Every other .v file is IP with two exceptions. The minilab2.v file is generated from the DE1-SoC project generator and RAW2GRAY.v is a modification of IP but is labeled as such in the file.

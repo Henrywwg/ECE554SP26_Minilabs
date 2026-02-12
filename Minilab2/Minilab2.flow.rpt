@@ -1,5 +1,5 @@
 Flow report for Minilab2
-Tue Feb 10 16:46:25 2026
+Tue Feb 10 18:47:21 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -41,18 +41,18 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Flow Status                     ; Successful - Tue Feb 10 16:46:05 2026           ;
+; Flow Status                     ; Successful - Tue Feb 10 18:47:01 2026           ;
 ; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                   ; Minilab2                                        ;
 ; Top-level Entity Name           ; Minilab2                                        ;
 ; Family                          ; Cyclone V                                       ;
 ; Device                          ; 5CSEMA5F31C6                                    ;
 ; Timing Models                   ; Final                                           ;
-; Logic utilization (in ALMs)     ; 516 / 32,070 ( 2 % )                            ;
-; Total registers                 ; 930                                             ;
+; Logic utilization (in ALMs)     ; 647 / 32,070 ( 2 % )                            ;
+; Total registers                 ; 1196                                            ;
 ; Total pins                      ; 159 / 457 ( 35 % )                              ;
 ; Total virtual pins              ; 0                                               ;
-; Total block memory bits         ; 28,672 / 4,065,280 ( < 1 % )                    ;
+; Total block memory bits         ; 56,788 / 4,065,280 ( 1 % )                      ;
 ; Total DSP Blocks                ; 0 / 87 ( 0 % )                                  ;
 ; Total HSSI RX PCSs              ; 0                                               ;
 ; Total HSSI PMA RX Deserializers ; 0                                               ;
@@ -68,7 +68,7 @@ on the Quartus Prime software download page.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/10/2026 16:39:35 ;
+; Start date & time ; 02/10/2026 18:38:45 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Minilab2            ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ on the Quartus Prime software download page.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 169767714570579.177076317514624        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 169767714570579.177077032428684        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -95,11 +95,11 @@ on the Quartus Prime software download page.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:20     ; 1.0                     ; 4967 MB             ; 00:00:47                           ;
-; Fitter               ; 00:05:53     ; 1.1                     ; 8162 MB             ; 00:32:01                           ;
-; Assembler            ; 00:00:12     ; 1.0                     ; 5242 MB             ; 00:00:12                           ;
-; Timing Analyzer      ; 00:00:19     ; 1.5                     ; 5553 MB             ; 00:00:25                           ;
-; Total                ; 00:06:44     ; --                      ; --                  ; 00:33:25                           ;
+; Analysis & Synthesis ; 00:00:23     ; 1.0                     ; 4964 MB             ; 00:00:55                           ;
+; Fitter               ; 00:07:34     ; 1.0                     ; 8106 MB             ; 00:41:49                           ;
+; Assembler            ; 00:00:13     ; 1.0                     ; 5242 MB             ; 00:00:13                           ;
+; Timing Analyzer      ; 00:00:19     ; 1.7                     ; 5554 MB             ; 00:00:28                           ;
+; Total                ; 00:08:29     ; --                      ; --                  ; 00:43:25                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
