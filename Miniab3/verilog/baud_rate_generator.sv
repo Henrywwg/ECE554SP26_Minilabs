@@ -1,8 +1,8 @@
 module baud_rate_generator{
     input clk,
     input rst,
-    input IOADDR [1:0],
-    input DATABUS [7:0],
+    input [1:0] IOADDR,
+    input [7:0] DATABUS,
     output enable
 };
 
@@ -28,6 +28,7 @@ module baud_rate_generator{
             if (IOADDR == 2b'10) db_low <= DATABUS;
 
             if (IOADDR == 2b'11) db_high <= DATABUS;
+
         end
     end
 
