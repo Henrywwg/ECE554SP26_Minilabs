@@ -31,7 +31,7 @@ module driver(
 
 
 // SM states
-typedef enum {IDLE, RECEIVING, TRANSMITTING, CONFIG_BAUD_LOWER, CONFIG_BAUD_UPPER} state_t;
+typedef enum logic [2:0] {IDLE, RECEIVING, TRANSMITTING, CONFIG_BAUD_LOWER, CONFIG_BAUD_UPPER} state_t;
 
 state_t state, next_state;
 
