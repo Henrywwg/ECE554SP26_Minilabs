@@ -26,7 +26,7 @@ module transmitter(
     ///////////////////
     // State Machine //
     ///////////////////
-    typedef enum [1:0] {IDLE, START, DATA, STOP} state_t;
+    typedef enum logic [1:0] {IDLE, START, DATA, STOP} state_t;
     state_t state, next_state;
 
     always_ff @(posedge clk or negedge rst) begin

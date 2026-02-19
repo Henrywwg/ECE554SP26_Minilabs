@@ -36,14 +36,12 @@ end
 
 
 // Sample on edge of enable. Our bad rate is actually based on 
-always_ff @(posedge clk or  negedge rst) begin
+always_ff @(posedge clk or  negedge rst)
     if(!rst)
         metastable_data <= '0;
     else if (enable)
         metastable_data <= {metastable_data[1:0], RxD};
     
-end
-
 
 
 // State machine reset and trans
