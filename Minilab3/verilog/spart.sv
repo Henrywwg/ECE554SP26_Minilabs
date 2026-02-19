@@ -25,8 +25,36 @@ module spart(
     output txd,
     input rxd
     );
+    // basically we just hook this up like the schematic shows us :3
 
 
+    // instantiate receiver
+
+
+    // instantiate transmitter
+
+
+    // instantiate bus interface
+    bus_interface iBUS(
+        .databus(databus),
+        .rda(rda),
+        .tbr(tbr),
+        .iocs(iocs),
+        .iorw(iorw),
+        .receive_buffer(), // from receiver to bus interface
+        .ioaddr(ioaddr),
+        .data_out() // from bus interface to driver
+    );
+
+
+    // instantiate baud rate generator
+    baud_rate_generator iBAUD(
+        .clk(clk),
+        .rst(rst),
+        .IOADDR(ioaddr),
+        .DATABUS(databus),
+        .enable() // to receiver and transmitter
+    );
 
 
 
