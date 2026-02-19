@@ -9,9 +9,6 @@ module transmitter(
     output TBR,
     output TxD
 );
-    //////////////////////
-    // Internal Signals //
-    //////////////////////
 
     logic wr_tx, tx_buf_full, register_busy, shift_enable, baud_done, last_bit;
     logic [2:0] bit_count;
