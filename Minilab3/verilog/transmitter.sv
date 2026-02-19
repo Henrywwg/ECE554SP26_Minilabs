@@ -1,4 +1,4 @@
-module transmitter{
+module transmitter(
     input clk,
     input rst,
     input [1:0] IOADDR,
@@ -6,6 +6,6 @@ module transmitter{
     input enable,
     output TBR,
     output TxD
-};
+);
 
 endmodule

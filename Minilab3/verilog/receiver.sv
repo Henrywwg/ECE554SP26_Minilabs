@@ -1,4 +1,4 @@
-module receiver{
+module receiver(
     input clk,
     input rst,
     input [1:0] IOADDR,
@@ -6,6 +6,6 @@ module receiver{
     input RxD,
     output RDA,
     output [7:0] dout
-};
+);
 
 endmodule
