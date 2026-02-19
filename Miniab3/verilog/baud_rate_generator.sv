@@ -1,10 +1,10 @@
-module baud_rate_generator{
+module baud_rate_generator(
     input clk,
     input rst,
     input [1:0] IOADDR,
     input [7:0] DATABUS,
     output enable
-};
+);
 
     // ----------------------------------------
     // Internal registers
@@ -18,16 +18,16 @@ module baud_rate_generator{
     localparam logic [15:0] DEFAULT_DIVISOR = 16'd324;
 
     // Divisor buffers, written to by the bus interface
-    always_ff @(posedge clock or negedge rst) begin
+    always_ff @(posedge clk or negedge rst) begin
         if (!rst) begin
             db_low <= DEFAULT_DIVISOR [7:0];
             db_high <= DEFAULT_DIVISOR [15:8];
         end
         else begin
 
-            if (IOADDR == 2b'10) db_low <= DATABUS;
+            if (IOADDR == 2'b10) db_low <= DATABUS;
 
-            if (IOADDR == 2b'11) db_high <= DATABUS;
+            if (IOADDR == 2'b11) db_high <= DATABUS;
 
         end
     end
@@ -40,7 +40,7 @@ module baud_rate_generator{
             counter <= DEFAULT_DIVISOR;
         end
         else begin
-            if (counter == 16'd0;) counter <= divisor_buffer;
+            if (counter == 16'd0) counter <= divisor_buffer;
             else counter <= counter - 1;
         end
     end
