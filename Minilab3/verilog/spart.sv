@@ -27,12 +27,27 @@ module spart(
     );
     // basically we just hook this up like the schematic shows us :3
 
+    ///////////////
+    // Internals //
+    ///////////////
+    logic enable;
+
 
     // instantiate receiver
 
 
     // instantiate transmitter
-
+    transmitter iTRANS(
+        .clk(clk),
+        .rst(rst),
+        .IOADDR(ioaddr),
+        .DATABUS(databus),
+        .IOCS(iocs),
+        .IORW(iorw),
+        .enable(enable),
+        .TBR(tbr),
+        .TxD(txd)
+    );
 
     // instantiate bus interface
     bus_interface iBUS(
@@ -53,7 +68,7 @@ module spart(
         .rst(rst),
         .IOADDR(ioaddr),
         .DATABUS(databus),
-        .enable() // to receiver and transmitter
+        .enable(enable) // to receiver and transmitter
     );
 
 
