@@ -21,7 +21,9 @@ state_t state, next_state;
 
 logic [3:0] div_16_counter; // Counter for 16x baud rate
 logic [2:0] metastable_data; // Shift register for metastability
-logic [7:0] data_buffer; // Buffer to hold received data
+logic [9:0] data_buffer; // Buffer to hold received data
+logic [2:0] bit_count; // Counter for received bits
+logic sample_trigger; // Trigger to sample data at the correct time
 logic en_b_cntr; 
 
 // actual baud counter                      !NOTE NEED TO FIX
@@ -35,11 +37,31 @@ always_ff @(posedge clk or negedge rst) begin
 end
 
 
+// Shift register for metastability and data capture
+always_ff @(posedge clk or negedge rst) begin
+    if (!rst)
+        data_buffer <= '0;
+    else if (sample_trigger)    // Shift in the whole start + data + stop bits for each rx
+        data_buffer <= {metastable_data[2], data_buffer[9:1]}; // Shift in new bit into MSB
+end
+
+// bit count
+always_ff @(posedge clk or negedge rst)
+    if (!rst)
+        bit_count <= '0;
+    else if (state == DATA_BITS && sample_trigger)
+        bit_count <= bit_count + 1'b1;
+    else if (state == IDLE)
+        bit_count <= '0;
+
+assign sample_trigger = (div_16_counter == 4'd8); // Sample in the middle of the bit period
+
+
 // Sample on edge of enable. Our bad rate is actually based on 
 always_ff @(posedge clk or  negedge rst)
     if(!rst)
         metastable_data <= '0;
-    else if (enable)
+    else                 
         metastable_data <= {metastable_data[1:0], RxD};
     
 
@@ -60,26 +82,42 @@ always_comb begin
 
     case (state)
         IDLE: begin
-            if (enable && RxD == 0) // Start bit detected
+            if (enable && RxD == 0) begin // Start bit detected
                 next_state = START_BIT;
+                en_b_cntr = 1;      // Start counting for baud rate
+            end
         end
+        
         START_BIT: begin
-            if (enable) 
+            en_b_cntr = 1;
+
+            if (sample_trigger) 
                 next_state = DATA_BITS;
         end
+
         DATA_BITS: begin
-            if (enable) 
-                next_state = STOP_BIT;
+            en_b_cntr = 1;
+            if (sample_trigger)                 
+                if (bit_count == 3'd7) // Last data bit received
+                    next_state = STOP_BIT;
+
         end
+
         STOP_BIT: begin
-            if (enable) 
+            en_b_cntr = 1;
+            if (sample_trigger)
                 next_state = IDLE;
         end
+        
+        default: next_state = IDLE;
     endcase
 
 end
 
 
+
+assign dout = data_buffer[8:1]; // Output the 8 data bits (ignore start and stop bits)
+assign RDA = (state == STOP_BIT) && sample_trigger; // Data is ready at the end of the stop bit sampling
 
 
 endmodule
