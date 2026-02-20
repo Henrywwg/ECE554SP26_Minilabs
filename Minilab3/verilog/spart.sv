@@ -36,6 +36,7 @@ module spart(
     ///////////////
     logic enable;
     logic [7:0] rx_data;
+    logic [7:0] data_out; // from bus interface to driver
 
     // instantiate receiver
     receiver iRECV(
@@ -56,7 +57,7 @@ module spart(
         .clk(clk),
         .rst(rst),
         .IOADDR(ioaddr),
-        .DATABUS(databus),
+        .DATABUS(data_out), // from bus interface
         .IOCS(iocs),
         .IORW(iorw),
         .enable(enable),
@@ -73,7 +74,7 @@ module spart(
         .iorw(iorw),
         .receive_buffer(rx_data), // from receiver to bus interface
         .ioaddr(ioaddr),
-        .data_out() // from bus interface to driver
+        .data_out(data_out) // from bus interface to driver
     );
 
 

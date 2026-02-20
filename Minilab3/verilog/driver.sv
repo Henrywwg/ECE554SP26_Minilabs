@@ -42,6 +42,7 @@ logic [7:0] databus_out;
 logic [15:0] baud_internal;
 logic [7:0] rx_data;
 logic capture_data; // flag to capture data on next clock cycle
+logic new_data; // flag to indicate new data is ready to transmit
 
 //Monitor br_cfg switches
 logic [1:0] br_cfg_prev;
@@ -69,7 +70,13 @@ always_ff @(posedge clk or negedge rst)
     else if (capture_data)
         rx_data <= databus;
 
-
+always_ff @(posedge clk or negedge rst)
+    if (!rst)
+        new_data <= 0; // Clear new data flag on reset
+    else if (capture_data)
+        new_data <= 1; // Set new data flag when we capture new data
+    else if (state == TRANSMITTING) 
+        new_data <= 0; // Clear new data flag once we've transmitted it
 
 
 // State machine logic and reset
@@ -96,9 +103,8 @@ always_comb begin
                 next_state = RECEIVING;
                 iocs_int = 1;
                 iorw_int = 1; // read
-                capture_data = 1; // flag to capture data
             end
-            else if(tbr) begin              // Transmit data is ready
+            else if(tbr && new_data) begin              // Transmit data is ready
                 next_state = TRANSMITTING;
                 iocs_int = 1;
                 iorw_int = 0; // write
@@ -117,6 +123,7 @@ always_comb begin
             next_state = IDLE; // return to idle after reading data and wait for tbr to transmit
             iocs_int = 1; // enable read
             iorw_int = 1; // read
+            capture_data = 1; // flag to capture data
         end
 
         TRANSMITTING: begin

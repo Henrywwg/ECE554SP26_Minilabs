@@ -27,13 +27,14 @@ module transmitter(
     // State Machine //
     ///////////////////
     typedef enum logic [1:0] {IDLE, START, DATA, STOP} state_t;
-    state_t state, next_state;
+    state_t state, next_state, prev_state;
 
     always_ff @(posedge clk or negedge rst) begin
         if (!rst)
             state <= IDLE;
         else 
             state <= next_state;
+            prev_state <= state;
     end
 
     always_comb begin
@@ -47,17 +48,17 @@ module transmitter(
             end
 
             START: begin
-                if (baud_done)
+                if (baud_done && enable)
                     next_state = DATA;
             end
 
             DATA: begin
-                if (baud_done && last_bit) 
+                if ((baud_done && enable) && last_bit) 
                     next_state = STOP;
             end
 
             STOP: begin
-                if (baud_done)
+                if (baud_done && enable)
                     next_state = IDLE;
             end
             default: next_state = IDLE;
@@ -73,11 +74,11 @@ module transmitter(
             clk_baud <= 0;
         end
         else begin
-            if (enable) begin
+            if (enable && (state == START || state == DATA || state == STOP)) begin
                 clk_baud++;
-                if (clk_baud == 4'd15) begin
-                    clk_baud <= 0;
-                end
+                // if (clk_baud == 4'd15) begin
+                //     clk_baud <= 0;
+                // end
             end
         end
     end
@@ -113,13 +114,13 @@ module transmitter(
         end
         else begin
             // LOAD shift register when starting transmission
-            if (!register_busy && tx_buf_full) begin
+            if (prev_state == IDLE && state == START) begin
                 transmit_register <= {1'b1, transmit_buffer, 1'b0}; // stop, data, start
                 register_busy   <= 1'b1;
             end
 
             // Shift during DATA/START/STOP
-            else if (shift_enable) begin
+            else if (shift_enable && enable) begin
                 transmit_register <= {1'b1, transmit_register[9:1]};
             end
 
@@ -136,7 +137,7 @@ module transmitter(
     always_ff @(posedge clk or negedge rst) begin
         if (!rst)
             bit_count <= 3'd0;
-        else if (state == DATA && baud_done)
+        else if (state == DATA && baud_done && enable)
             bit_count <= bit_count + 1;
         else if (state == IDLE)
             bit_count <= 3'd0;

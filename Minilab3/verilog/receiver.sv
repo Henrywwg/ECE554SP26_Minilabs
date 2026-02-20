@@ -30,9 +30,9 @@ logic en_b_cntr;
 always_ff @(posedge clk or negedge rst) begin
     if (!rst)
         div_16_counter <= '0;
-    else if (en_b_cntr)
+    else if (en_b_cntr && enable)
         div_16_counter <= div_16_counter + 1'b1;
-    else
+    else if (!en_b_cntr)
         div_16_counter <= '0;
 end
 
@@ -54,7 +54,7 @@ always_ff @(posedge clk or negedge rst)
     else if (state == IDLE)
         bit_count <= '0;
 
-assign sample_trigger = (div_16_counter == 4'd8); // Sample in the middle of the bit period
+assign sample_trigger = (enable) && (div_16_counter == 4'd8); // Sample in the middle of the bit period
 
 
 // Sample on edge of enable. Our bad rate is actually based on 

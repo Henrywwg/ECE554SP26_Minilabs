@@ -46,6 +46,8 @@ module spart_tb ();
         .databus(databus)
     );    
 
+    int bit_cnt=0; // Counter for all bits
+
     initial begin
         // Initialize signals & reset
         clk = 0;
@@ -55,6 +57,7 @@ module spart_tb ();
 
         @(negedge clk);
         rst = 1; // Release reset
+        iocs = 1;
 
         repeat(10) @(posedge clk); // Wait for some time to allow config
         
@@ -91,11 +94,11 @@ module spart_tb ();
         if (iDriver.state != iDriver.IDLE)
             $display("Error: Driver not in IDLE state at start of transmission tests. Current state: %d", iDriver.state);
         else
-            $display("Driver correctly in IDLE state at start of transmission tests.");
+            $display("\t\tPASS: Driver correctly in IDLE state at start of transmission tests.\n");
 
 
         // Simulate a transmission by writing data to the transmit buffer
-        tx_data = 8'h84; // Test byte to transmit 1000 0100 (test ordering of bits)
+        tx_data = 8'hAA; // Test byte to transmit (10101010)
 
 
         //Pull rxd low to simulate start bit
@@ -105,6 +108,7 @@ module spart_tb ();
         repeat(5208) @(negedge clk); // Wait for one baud period (which is trickily 16x the divisor or around 5208 clocks)
 
         for (int i = 0; i < 8; i++) begin
+            bit_cnt = i;
             rxd = tx_data[i]; // Send bits LSB first
             repeat(5208) @(negedge clk); // One baud period
         end
@@ -121,6 +125,7 @@ module spart_tb ();
                 repeat(7812) @(negedge clk); // Wait 1.5 baud periods to sample in the middle of the first data bit
                 for (int j = 0; j < 8; j++) begin
                     rx_data[j] = txd; // Sample data bits
+                    bit_cnt = j;
                     $display("Received bit %d: %b", j, rx_data[j]);
                     $display("\t\t\tTime: %t\n", $time);
                     repeat(5208) @(negedge clk); // Wait one baud period between bits
