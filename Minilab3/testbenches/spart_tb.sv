@@ -7,9 +7,9 @@ module spart_tb ();
     logic iorw;
     logic rda;
     logic tbr;
-    logic [1:0] ioaddr;
-    logic [7:0] databus;
-    logic  [1:0]br_cfg;
+    logic   [1:0] ioaddr;
+    wire    [7:0] databus;
+    logic   [1:0]br_cfg;
 
     // Testbench signals
     logic txd;  // Output of spart
@@ -121,9 +121,11 @@ module spart_tb ();
                 repeat(7812) @(negedge clk); // Wait 1.5 baud periods to sample in the middle of the first data bit
                 for (int j = 0; j < 8; j++) begin
                     rx_data[j] = txd; // Sample data bits
+                    $display("Received bit %d: %b", j, rx_data[j]);
+                    $display("\t\t\tTime: %t\n", $time);
                     repeat(5208) @(negedge clk); // Wait one baud period between bits
-                    break; // Break out of the loop after receiving the byte
                 end
+                break; // Break out of the loop after receiving the byte
             end
         end
 

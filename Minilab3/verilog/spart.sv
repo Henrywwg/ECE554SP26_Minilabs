@@ -1,3 +1,7 @@
+//set default_nettype to none to catch undeclared signals
+`default_nettype none
+
+
 //////////////////////////////////////////////////////////////////////////////////
 // Company:         UW
 // Engineer:        Henry Wysong-Grass
@@ -14,16 +18,16 @@
 
 
 module spart(
-    input clk,
-    input rst,
-    input iocs,
-    input iorw,
-    output rda,
-    output tbr,
-    input [1:0] ioaddr,
-    inout [7:0] databus,
-    output txd,
-    input rxd
+    input wire clk,
+    input wire rst,
+    input wire iocs,
+    input wire iorw,
+    output wire rda,
+    output wire tbr,
+    input wire [1:0] ioaddr,
+    inout wire [7:0] databus,
+    output wire txd,
+    input wire rxd
     );
     // basically we just hook this up like the schematic shows us :3
 
@@ -31,9 +35,20 @@ module spart(
     // Internals //
     ///////////////
     logic enable;
-
+    logic [7:0] rx_data;
 
     // instantiate receiver
+    receiver iRECV(
+        .clk(clk),
+        .rst(rst),
+        .IOADDR(ioaddr),
+        .enable(enable),
+        .IOCS(iocs),
+        .IORW(iorw),
+        .RxD(rxd),
+        .RDA(rda),
+        .dout(rx_data) // to bus interface
+     );
 
 
     // instantiate transmitter
@@ -56,7 +71,7 @@ module spart(
         .tbr(tbr),
         .iocs(iocs),
         .iorw(iorw),
-        .receive_buffer(), // from receiver to bus interface
+        .receive_buffer(rx_data), // from receiver to bus interface
         .ioaddr(ioaddr),
         .data_out() // from bus interface to driver
     );
