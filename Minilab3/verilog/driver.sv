@@ -26,7 +26,8 @@ module driver(
     input wire rda,
     input wire tbr,
     output wire [1:0] ioaddr,
-    inout wire [7:0] databus
+    inout wire [7:0] databus,
+    output wire [2:0] state_out // for testing/debugging
     );
 
 
@@ -34,6 +35,8 @@ module driver(
 typedef enum logic [2:0] {IDLE, RECEIVING, TRANSMITTING, CONFIG_BAUD_LOWER, CONFIG_BAUD_UPPER} state_t;
 
 state_t state, next_state;
+
+assign state_out = state; // output current state for testing/debugging
 
 logic iocs_int;
 logic iorw_int;

@@ -41,6 +41,7 @@ wire tbr;
 wire [1:0] ioaddr;
 wire [7:0] databus;
 wire [1:0] br_cfg;
+wire [2:0] state;
 
 // press button[0] to generate a low active reset signal
 wire rst = ~KEY[0];
@@ -48,7 +49,7 @@ wire rst = ~KEY[0];
 // LED[9] : indicator for RX signal
 // LED[8] : indicator for TX signal
 // LED[0] : indicator for rst signal 
-assign LEDR = {~rxd,~txd,7'b0,rst};
+assign LEDR = {~rxd,~txd, ~state, 4'hF, rst};
 
 // GPIO[3] as TX output, GPIO[5] as RX input
 assign GPIO[3] = txd;
@@ -67,7 +68,8 @@ spart spart0(   .clk(CLOCK_50),
                 .ioaddr(ioaddr),
                 .databus(databus),
                 .txd(txd),
-                .rxd(rxd)
+                .rxd(rxd),
+                .state_out(state) // for testing/debugging
             );
 
 // Instantiate your driver here
@@ -79,7 +81,8 @@ driver driver0( .clk(CLOCK_50),
                 .rda(rda),
                 .tbr(tbr),
                 .ioaddr(ioaddr),
-                .databus(databus)
+                .databus(databus),
+                .state_out()
             );
 
 			

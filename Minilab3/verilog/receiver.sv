@@ -7,7 +7,8 @@ module receiver(
     input IORW,
     input RxD,
     output RDA,
-    output [7:0] dout
+    output [7:0] dout,
+    output [1:0] state_out // for testing/debugging
 );
 
 typedef enum logic [1:0] {
@@ -18,6 +19,8 @@ typedef enum logic [1:0] {
 } state_t;
 
 state_t state, next_state;
+
+assign state_out = state; // output current state for testing/debugging
 
 logic [3:0] div_16_counter; // Counter for 16x baud rate
 logic [2:0] metastable_data; // Shift register for metastability

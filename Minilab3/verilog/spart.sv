@@ -27,7 +27,8 @@ module spart(
     input wire [1:0] ioaddr,
     inout wire [7:0] databus,
     output wire txd,
-    input wire rxd
+    input wire rxd,
+    output wire [1:0] state_out // for testing/debugging
     );
     // basically we just hook this up like the schematic shows us :3
 
@@ -48,7 +49,8 @@ module spart(
         .IORW(iorw),
         .RxD(rxd),
         .RDA(rda),
-        .dout(rx_data) // to bus interface
+        .dout(rx_data), // to bus interface
+        .state_out(state_out) // for testing/debugging
      );
 
 

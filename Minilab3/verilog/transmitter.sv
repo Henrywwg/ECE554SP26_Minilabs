@@ -32,9 +32,10 @@ module transmitter(
     always_ff @(posedge clk or negedge rst) begin
         if (!rst)
             state <= IDLE;
-        else 
+        else begin
             state <= next_state;
             prev_state <= state;
+        end
     end
 
     always_comb begin
