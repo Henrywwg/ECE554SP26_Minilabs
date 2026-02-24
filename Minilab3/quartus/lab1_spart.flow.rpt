@@ -1,5 +1,5 @@
 Flow report for lab1_spart
-Mon Feb 23 16:40:57 2026
+Mon Feb 23 17:09:11 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -41,15 +41,15 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Flow Status                     ; Successful - Mon Feb 23 16:40:52 2026           ;
+; Flow Status                     ; Successful - Mon Feb 23 17:09:05 2026           ;
 ; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                   ; lab1_spart                                      ;
 ; Top-level Entity Name           ; lab1_spart                                      ;
 ; Family                          ; Cyclone V                                       ;
 ; Device                          ; 5CSEMA5F31C6                                    ;
 ; Timing Models                   ; Final                                           ;
-; Logic utilization (in ALMs)     ; 68 / 32,070 ( < 1 % )                           ;
-; Total registers                 ; 109                                             ;
+; Logic utilization (in ALMs)     ; 69 / 32,070 ( < 1 % )                           ;
+; Total registers                 ; 108                                             ;
 ; Total pins                      ; 106 / 457 ( 23 % )                              ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 0 / 4,065,280 ( 0 % )                           ;
@@ -68,7 +68,7 @@ on the Quartus Prime software download page.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/23/2026 16:39:43 ;
+; Start date & time ; 02/23/2026 17:08:04 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; lab1_spart          ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ on the Quartus Prime software download page.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 22072708532508.177188638317740         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 22072708532508.177188808332156         ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -95,11 +95,11 @@ on the Quartus Prime software download page.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:06     ; 1.0                     ; 4897 MB             ; 00:00:18                           ;
-; Fitter               ; 00:00:55     ; 1.0                     ; 8120 MB             ; 00:04:51                           ;
-; Assembler            ; 00:00:05     ; 1.0                     ; 5250 MB             ; 00:00:05                           ;
-; Timing Analyzer      ; 00:00:04     ; 1.2                     ; 5428 MB             ; 00:00:05                           ;
-; Total                ; 00:01:10     ; --                      ; --                  ; 00:05:19                           ;
+; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 4897 MB             ; 00:00:18                           ;
+; Fitter               ; 00:00:48     ; 1.0                     ; 8122 MB             ; 00:04:25                           ;
+; Assembler            ; 00:00:04     ; 1.0                     ; 5250 MB             ; 00:00:05                           ;
+; Timing Analyzer      ; 00:00:05     ; 1.2                     ; 5429 MB             ; 00:00:05                           ;
+; Total                ; 00:01:04     ; --                      ; --                  ; 00:04:53                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

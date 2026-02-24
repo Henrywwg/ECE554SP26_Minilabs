@@ -41,15 +41,17 @@ wire tbr;
 wire [1:0] ioaddr;
 wire [7:0] databus;
 wire [1:0] br_cfg;
-wire [2:0] state;
+wire [1:0] state;
 
 // press button[0] to generate a low active reset signal
-wire rst = ~KEY[0];
+wire rst = KEY[0];
 
 // LED[9] : indicator for RX signal
 // LED[8] : indicator for TX signal
+// LED[7:6] : receiver state (inverted)
+// LED[5:1] : all ON (0x1F)
 // LED[0] : indicator for rst signal 
-assign LEDR = {~rxd,~txd, ~state, 4'hF, rst};
+assign LEDR = {~rxd, ~txd, state, 5'h01, rst};
 
 // GPIO[3] as TX output, GPIO[5] as RX input
 assign GPIO[3] = txd;

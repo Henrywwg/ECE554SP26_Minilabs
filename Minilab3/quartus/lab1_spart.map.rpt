@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lab1_spart
-Mon Feb 23 16:39:50 2026
+Mon Feb 23 17:08:10 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -54,7 +54,7 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Feb 23 16:39:50 2026           ;
+; Analysis & Synthesis Status     ; Successful - Mon Feb 23 17:08:10 2026           ;
 ; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                   ; lab1_spart                                      ;
 ; Top-level Entity Name           ; lab1_spart                                      ;
@@ -198,14 +198,14 @@ on the Quartus Prime software download page.
 +---------------------------------------------+--------------+
 ; Resource                                    ; Usage        ;
 +---------------------------------------------+--------------+
-; Estimate of Logic utilization (ALMs needed) ; 78           ;
+; Estimate of Logic utilization (ALMs needed) ; 76           ;
 ;                                             ;              ;
-; Combinational ALUT usage for logic          ; 116          ;
+; Combinational ALUT usage for logic          ; 115          ;
 ;     -- 7 input functions                    ; 0            ;
-;     -- 6 input functions                    ; 35           ;
-;     -- 5 input functions                    ; 16           ;
-;     -- 4 input functions                    ; 12           ;
-;     -- <=3 input functions                  ; 53           ;
+;     -- 6 input functions                    ; 32           ;
+;     -- 5 input functions                    ; 18           ;
+;     -- 4 input functions                    ; 13           ;
+;     -- <=3 input functions                  ; 52           ;
 ;                                             ;              ;
 ; Dedicated logic registers                   ; 102          ;
 ;                                             ;              ;
@@ -215,8 +215,8 @@ on the Quartus Prime software download page.
 ;                                             ;              ;
 ; Maximum fan-out node                        ; KEY[0]~input ;
 ; Maximum fan-out                             ; 103          ;
-; Total fan-out                               ; 1007         ;
-; Average fan-out                             ; 2.16         ;
+; Total fan-out                               ; 1000         ;
+; Average fan-out                             ; 2.15         ;
 +---------------------------------------------+--------------+
 
 
@@ -225,11 +225,11 @@ on the Quartus Prime software download page.
 +-----------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node        ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                ; Entity Name         ; Library Name ;
 +-----------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+---------------------+--------------+
-; |lab1_spart                       ; 116 (4)             ; 102 (0)                   ; 0                 ; 0          ; 106  ; 0            ; |lab1_spart                                        ; lab1_spart          ; work         ;
+; |lab1_spart                       ; 115 (4)             ; 102 (0)                   ; 0                 ; 0          ; 106  ; 0            ; |lab1_spart                                        ; lab1_spart          ; work         ;
 ;    |driver:driver0|               ; 29 (29)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |lab1_spart|driver:driver0                         ; driver              ; work         ;
-;    |spart:spart0|                 ; 83 (0)              ; 86 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |lab1_spart|spart:spart0                           ; spart               ; work         ;
+;    |spart:spart0|                 ; 82 (0)              ; 86 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |lab1_spart|spart:spart0                           ; spart               ; work         ;
 ;       |baud_rate_generator:iBAUD| ; 27 (27)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |lab1_spart|spart:spart0|baud_rate_generator:iBAUD ; baud_rate_generator ; work         ;
-;       |receiver:iRECV|            ; 22 (22)             ; 23 (23)                   ; 0                 ; 0          ; 0    ; 0            ; |lab1_spart|spart:spart0|receiver:iRECV            ; receiver            ; work         ;
+;       |receiver:iRECV|            ; 21 (21)             ; 23 (23)                   ; 0                 ; 0          ; 0    ; 0            ; |lab1_spart|spart:spart0|receiver:iRECV            ; receiver            ; work         ;
 ;       |transmitter:iTRANS|        ; 34 (34)             ; 31 (31)                   ; 0                 ; 0          ; 0    ; 0            ; |lab1_spart|spart:spart0|transmitter:iTRANS        ; transmitter         ; work         ;
 +-----------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -406,21 +406,21 @@ Encoding Type:  One-Hot
 ;     ENA               ; 1                           ;
 ;     ENA CLR           ; 59                          ;
 ; arriav_io_obuf        ; 36                          ;
-; arriav_lcell_comb     ; 123                         ;
+; arriav_lcell_comb     ; 122                         ;
 ;     arith             ; 16                          ;
 ;         1 data inputs ; 16                          ;
-;     normal            ; 107                         ;
+;     normal            ; 106                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 9                           ;
 ;         2 data inputs ; 16                          ;
-;         3 data inputs ; 17                          ;
-;         4 data inputs ; 12                          ;
-;         5 data inputs ; 16                          ;
-;         6 data inputs ; 35                          ;
+;         3 data inputs ; 16                          ;
+;         4 data inputs ; 13                          ;
+;         5 data inputs ; 18                          ;
+;         6 data inputs ; 32                          ;
 ; boundary_port         ; 106                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 2.11                        ;
+; Average LUT depth     ; 2.09                        ;
 +-----------------------+-----------------------------+
 
 
@@ -439,7 +439,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Mon Feb 23 16:39:43 2026
+    Info: Processing started: Mon Feb 23 17:08:03 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab1_spart -c lab1_spart
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -545,10 +545,10 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX5[4]" is stuck at VCC File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 20
     Warning (13410): Pin "HEX5[5]" is stuck at VCC File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 20
     Warning (13410): Pin "HEX5[6]" is stuck at VCC File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 20
-    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 26
-    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 26
-    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 26
-    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 26
+    Warning (13410): Pin "LEDR[1]" is stuck at VCC File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 26
+    Warning (13410): Pin "LEDR[2]" is stuck at VCC File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 26
+    Warning (13410): Pin "LEDR[3]" is stuck at VCC File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 26
+    Warning (13410): Pin "LEDR[4]" is stuck at VCC File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 26
     Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 26
     Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 26
     Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 26
@@ -573,14 +573,14 @@ Warning (21074): Design contains 14 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 29
     Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 29
     Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/henry/Documents/ECE554SP26_Minilabs/Minilab3/quartus/lab1_spart.v Line: 29
-Info (21057): Implemented 267 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 266 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 52 output pins
     Info (21060): Implemented 36 bidirectional pins
-    Info (21061): Implemented 161 logic cells
+    Info (21061): Implemented 160 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 105 warnings
     Info: Peak virtual memory: 4897 megabytes
-    Info: Processing ended: Mon Feb 23 16:39:50 2026
+    Info: Processing ended: Mon Feb 23 17:08:10 2026
     Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:18
 

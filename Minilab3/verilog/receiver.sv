@@ -85,7 +85,8 @@ always_comb begin
 
     case (state)
         IDLE: begin
-            if (enable && RxD == 0) begin // Start bit detected
+//            if (enable && RxD == 0) begin // Start bit detected
+            if (RxD == 0) begin // Start bit detected
                 next_state = START_BIT;
                 en_b_cntr = 1;      // Start counting for baud rate
             end
